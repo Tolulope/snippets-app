@@ -47,9 +47,6 @@ LogBox.ignoreLogs(['Setting a timer']);
 
 const HomePage = ({ navigation }) => {
 
-  const _isMounted = useRef(true); // Initial value _isMounted = true
-
-
   const [userData, setUserData] = useState([]);
   let userlist = [];
   const db = app.firestore();
@@ -58,96 +55,57 @@ const HomePage = ({ navigation }) => {
   const getUser = () => {
 
     db.collection('snippets').get().then(querySnapshot => {
-      // if (_isMounted.current) { 
-    // console.log('Total users: ', querySnapshot.size);
 
       querySnapshot.forEach(documentSnapshot => {
 
-      // console.log('User ID: ', documentSnapshot.data().name, documentSnapshot.data());
+        userlist.push({name: documentSnapshot.data().name, 
+                      subtitle1: documentSnapshot.data().subtitle1,
+                      subtitle2: documentSnapshot.data().subtitle2,
+                      allowed: documentSnapshot.data().allowedTime,
+                      estimated: documentSnapshot.data().estimatedTime,
+                      });
+      }); 
 
+      setUserData(userlist);
 
-      userlist.push({name: documentSnapshot.data().name, 
-                     subtitle1: documentSnapshot.data().subtitle1,
-                     subtitle2: documentSnapshot.data().subtitle2,
-                     allowed: documentSnapshot.data().allowedTime,
-                     estimated: documentSnapshot.data().estimatedTime,
-                    });
-                  // });
-
-
-    
-                // } // if is mounted 
-
-                // console.log({name: documentSnapshot.data().name, 
-                //   subtitle1: documentSnapshot.data().subtitle1,
-                //   subtitle2: documentSnapshot.data().subtitle2,
-                //   allowed: documentSnapshot.data().allowedTime,
-                //   estimated: documentSnapshot.data().estimatedTime,
-                //  });
-        
-
-  }); //getUser();
-  // console.log(userlist);
-  setUserData(userlist); 
-}); //db.collection.get.then
-  }
+    }); //db.collection.get.then
+  } //getUser();
 
 useEffect(() => {
   getUser();
-
-
-
-  // console.log(userData);
-  // console.log(userlist);
-
-  // setUserData(userlist)
-
-  // return () => {
-  //   _isMounted.current = false;
-  //   setState({}); // This worked for me
-  // };
 }, [userData]);
-// }, []);
-// 
-
-// console.log(userData);
-
-
-
-  // console.log("Hello");
-  // console.log(typeof(userData));
 
   return (
     <SafeAreaView style={{ flex: 1, padding: 16 }}>
-      {/* <View style={{ flex: 1, padding: 16 }}> */}
-        <View
-         style={styles.view}>
-           <Text style={styles.date}>
+        <View style={styles.view}>
+
+          <Text style={styles.date}>
             Friday 11 Feb
           </Text>
+
           <Text style={styles.name}>
             Hi, Alejo Navarro
           </Text>
-          {/* </View> */}
 
-        <View style={styles.search}>
-          <SearchBar
-            placeholder="Search"
-            lightTheme
-            inputStyle={styles.searchInput}
-            containerStyle={styles.searchConatiner}
-            inputContainerStyle={styles.searchInputContainer}
-            // onChangeText={updateSearch}
-            // value={search}
-         />
-        </View>
+          <View style={styles.search}>
+            
+            <SearchBar
+              placeholder="Search"
+              lightTheme
+              inputStyle={styles.searchInput}
+              containerStyle={styles.searchConatiner}
+              inputContainerStyle={styles.searchInputContainer}
+              // onChangeText={updateSearch}
+              // value={search}
+            />
 
-        <Text style={styles.preferences}>
-           Based on your preferences
-        </Text>
+            <Text style={styles.preferences}>
+              Based on your preferences
+            </Text>
+
+          </View>
 
         <ScrollView>
-
         {
         userData.map((item, index) => {
               return ( 
@@ -156,10 +114,6 @@ useEffect(() => {
             })
         }
         </ScrollView>
-        {/* <SnippetPreview ngoName={'Pets in Need'} /> */}
-
-
-
         
       </View>
     </SafeAreaView>
@@ -250,10 +204,14 @@ searchInputContainer: {
 
 
 },
+preferencesTop: {
+  paddingTop: 200,
+},
 preferences: {
   fontFamily: "Montserrat_600SemiBold",
-  position: 'absolute',
-  paddingTop: 200,
+  // position: 'absolute',
+  // paddingTop: 200,
+  padding: 16,
   fontSize: 18,
 
 },

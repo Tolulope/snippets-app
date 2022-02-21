@@ -62,7 +62,7 @@ const SnippetPreview = (props) => {
 
 const styles = StyleSheet.create({
     previewWrapper: {
-        paddingVertical: 50,
+        // paddingVertical: 50,
     },
     topOfPreview: {
         flexDirection: 'row',
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     },
     item:{
         backgroundColor: '#FFF',
-        padding: 15,
+        padding: 9,
         borderRadius: 10,
         flexDirection: 'column',
         // alignItems: 'center',
