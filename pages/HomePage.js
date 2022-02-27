@@ -5,42 +5,34 @@ import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView } from 'react-na
 import { SearchBar } from 'react-native-elements';
 import SnippetPreview from '../components/SnippetPreview';
 import { LogBox } from 'react-native';
-
-
-// import { initializeApp } from 'firebase/app';
-//import {...} from "firebase/firestore";
-// import firestore from '@react-native-firebase/firestore';
-// import firebase from 'firebase';
-// import 'firebase/firestore'
-
-
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
 import { ScrollView } from 'react-native-gesture-handler';
+import { db, auth } from '../firebase';
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCxOmS9UMjPUwjr2Vj_-SXy6ScZt1C9XMA",
-  authDomain: "snippets-47f15.firebaseapp.com",
-  projectId: "snippets-47f15",
-  storageBucket: "snippets-47f15.appspot.com",
-  messagingSenderId: "653699261105",
-  appId: "1:653699261105:web:cd3e94c5fe958011357890"
-};
 
-// initializeApp(firebaseConfig);
-// app = firebase.initializeApp(firebaseConfig)
 
-let app;
+// import firebase from 'firebase/compat/app';
+// import 'firebase/compat/auth';
+// import 'firebase/compat/firestore';
 
-if (firebase.apps.length === 0) {
-  app = firebase.initializeApp(firebaseConfig)
-} else {
-  app = firebase.app();
-}
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCxOmS9UMjPUwjr2Vj_-SXy6ScZt1C9XMA",
+//   authDomain: "snippets-47f15.firebaseapp.com",
+//   projectId: "snippets-47f15",
+//   storageBucket: "snippets-47f15.appspot.com",
+//   messagingSenderId: "653699261105",
+//   appId: "1:653699261105:web:cd3e94c5fe958011357890"
+// };
 
-const db = app.firestore();
-const auth = firebase.auth();
+// let app;
+
+// if (firebase.apps.length === 0) {
+//   app = firebase.initializeApp(firebaseConfig)
+// } else {
+//   app = firebase.app();
+// }
+
+// const db = app.firestore();
+// const auth = firebase.auth();
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -49,7 +41,7 @@ const HomePage = ({ navigation }) => {
 
   const [userData, setUserData] = useState([]);
   let userlist = [];
-  const db = app.firestore();
+  // const db = app.firestore();
 
   
   const getUser = () => {
