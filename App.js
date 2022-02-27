@@ -33,6 +33,9 @@ import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import LibraryPage from './pages/LibraryPage';
 
+import * as Icon from "react-native-feather";
+
+
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -53,9 +56,9 @@ function TabStack() {
         options={{
           tabBarLabel: 'Home',
           headerShown: false,
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="home" color={color} size={size} />
-          // ),
+          tabBarIcon: ({ color, size }) => (
+            <Icon.Home name="home" color={color} size={size} />
+          ),
         }}  />
         <Tab.Screen
         name="Biblioteque"
@@ -63,9 +66,9 @@ function TabStack() {
         options={{
           tabBarLabel: 'Library',
           headerShown: false,
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="settings" color={color} size={size} />
-          // ),
+          tabBarIcon: ({ color, size }) => (
+            <Icon.Book name="settings" color={color} size={size} />
+          ),
         }} />
       <Tab.Screen
         name="Profil"
@@ -73,9 +76,9 @@ function TabStack() {
         options={{
           tabBarLabel: 'Profile',
           headerShown: false,
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="settings" color={color} size={size} />
-          // ),
+          tabBarIcon: ({ color, size }) => (
+            <Icon.User name="settings" color={color} size={size} />
+          ),
         }} />
     </Tab.Navigator>
   );
