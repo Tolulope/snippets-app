@@ -1,11 +1,8 @@
-// React Native Tab - Example using React Navigation V5 //
-// https://aboutreact.com/react-native-tab //
 import 'react-native-gesture-handler';
 
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 import AppLoading from 'expo-app-loading';
 import { useFonts } from '@expo-google-fonts/montserrat';
@@ -28,61 +25,7 @@ import {  Montserrat_100Thin,
   Montserrat_900Black,
   Montserrat_900Black_Italic  } from '@expo-google-fonts/montserrat';
 
-
-import HomePage from './pages/HomePage';
-import ProfilePage from './pages/ProfilePage';
-import LibraryPage from './pages/LibraryPage';
-
-import * as Icon from "react-native-feather";
-
-
-const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
-
-function TabStack() {
-  return (
-    <Tab.Navigator
-    screenOptions={({ route }) => ({
-        tabBarActiveTintColor: "#36B6B6",
-        tabBarInactiveTintColor: "#7C7C7C",
-        tabBarLabelStyle: {
-          fontFamily: "Montserrat_400Regular",
-          fontSize: 10,
-        },
-      })}>
-      <Tab.Screen
-        name="Acceuil"
-        component={HomePage}
-        options={{
-          tabBarLabel: 'Home',
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Icon.Home name="home" color={color} size={size} />
-          ),
-        }}  />
-        <Tab.Screen
-        name="Biblioteque"
-        component={LibraryPage}
-        options={{
-          tabBarLabel: 'Library',
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Icon.Book name="settings" color={color} size={size} />
-          ),
-        }} />
-      <Tab.Screen
-        name="Profil"
-        component={ProfilePage}
-        options={{
-          tabBarLabel: 'Profile',
-          headerShown: false,
-          tabBarIcon: ({ color, size }) => (
-            <Icon.User name="settings" color={color} size={size} />
-          ),
-        }} />
-    </Tab.Navigator>
-  );
-}
+import { MainStackNavigator } from './navigation/StackNavigator';
 
 function App() {
 let [fontsLoaded] = useFonts({
@@ -111,28 +54,10 @@ if (!fontsLoaded) {
 } else {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Settings"
-        screenOptions={{
-          headerStyle: { backgroundColor: '#633689' },
-          headerTintColor: '#fff',
-          headerTitleStyle: { fontWeight: 'bold' },
-          headerShown: false,
-        }}>
-        <Stack.Screen name="TabStack" component={TabStack} options={{ title: 'Tab Stack' }}/>
-      </Stack.Navigator>
+      <MainStackNavigator />
     </NavigationContainer>
   );
 }
 }
-
-// const styles = StyleSheet.create({
-
-//     text: {
-//         fontFamily: "Montserrat_400Regular",
-//     }
-
-
-// });
 
 export default App;
