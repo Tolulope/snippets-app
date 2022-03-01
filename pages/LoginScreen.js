@@ -3,16 +3,16 @@ import React, { useEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { auth } from '../firebase'
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const navigation = useNavigation()
+  // const navigation = useNavigation()
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        navigation.replace("HomePage")
+        navigation.navigate('BottomTabNavigator', {screen: 'Acceuil'})
       }
     })
 
@@ -42,8 +42,7 @@ const LoginScreen = () => {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior="padding">
-      
+    >
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Email"
@@ -78,7 +77,6 @@ const LoginScreen = () => {
   )
 }
 
-export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -126,3 +124,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 })
+
+
+export default LoginScreen;

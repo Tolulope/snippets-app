@@ -1,5 +1,3 @@
-// React Native Tab - Example using React Navigation V5 //
-// https://aboutreact.com/react-native-tab //
 import React, {useState, useEffect, setState, useRef, useMemo } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView } from 'react-native';
 import { SearchBar } from 'react-native-elements';
@@ -8,31 +6,6 @@ import { LogBox } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { db, auth } from '../firebase';
 
-
-
-// import firebase from 'firebase/compat/app';
-// import 'firebase/compat/auth';
-// import 'firebase/compat/firestore';
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCxOmS9UMjPUwjr2Vj_-SXy6ScZt1C9XMA",
-//   authDomain: "snippets-47f15.firebaseapp.com",
-//   projectId: "snippets-47f15",
-//   storageBucket: "snippets-47f15.appspot.com",
-//   messagingSenderId: "653699261105",
-//   appId: "1:653699261105:web:cd3e94c5fe958011357890"
-// };
-
-// let app;
-
-// if (firebase.apps.length === 0) {
-//   app = firebase.initializeApp(firebaseConfig)
-// } else {
-//   app = firebase.app();
-// }
-
-// const db = app.firestore();
-// const auth = firebase.auth();
 
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -46,6 +19,10 @@ const HomePage = ({ navigation }) => {
   
   const getUser = () => {
 
+    // console.log(userData);
+
+    
+    if (userData.length ==0) {
     db.collection('snippets').get().then(querySnapshot => {
 
       querySnapshot.forEach(documentSnapshot => {
@@ -58,14 +35,23 @@ const HomePage = ({ navigation }) => {
                       });
       }); 
 
+      // console.log(userlist)
+
       setUserData(userlist);
 
     }); //db.collection.get.then
+
+
+  }//if statement
+
+
   } //getUser();
+
+
 
 useEffect(() => {
   getUser();
-}, [userData]);
+}, []);
 
   return (
     <SafeAreaView style={{ flex: 1, padding: 16 }}>
