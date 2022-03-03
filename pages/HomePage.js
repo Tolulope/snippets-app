@@ -3,6 +3,20 @@ import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView } from 'react-na
 import { SearchBar } from 'react-native-elements';
 import SnippetPreview from '../components/SnippetPreview';
 import { LogBox } from 'react-native';
+
+import { Feather } from '@expo/vector-icons'; 
+
+
+// import { initializeApp } from 'firebase/app';
+//import {...} from "firebase/firestore";
+// import firestore from '@react-native-firebase/firestore';
+// import firebase from 'firebase';
+// import 'firebase/firestore'
+
+
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
 import { ScrollView } from 'react-native-gesture-handler';
 import { db, auth } from '../firebase';
 
@@ -68,12 +82,15 @@ useEffect(() => {
 }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: 16 }}>
+    <ScrollView style={{ flex: 1, marginHorizontal: 16, marginTop: 40 }} showsVerticalScrollIndicator={false}>
         <View style={styles.view}>
-
+          <View style={styles.dateContainer}>
+          <Feather name="sun" size={16} color='#36B6B6' />
           <Text style={styles.date}>
             Friday 11 Feb
           </Text>
+          </View>
+          
 
           <Text style={styles.name}>
             Hi, Alejo Navarro
@@ -90,14 +107,13 @@ useEffect(() => {
               // onChangeText={updateSearch}
               // value={search}
             />
-
             <Text style={styles.preferences}>
-              Based on your preferences
+              Based on your skills and interests
             </Text>
 
           </View>
 
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
         {
         userData.map((item, index) => {
               return ( 
@@ -108,7 +124,7 @@ useEffect(() => {
         </ScrollView>
         
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
@@ -132,17 +148,22 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   date: {
-    position: 'absolute',
-    fontFamily: "Montserrat_400Regular",
+    fontFamily: "Montserrat_600SemiBold",
     color: '#36B6B6',
     fontSize: 14,
+    marginLeft: 5
+
+  },
+  dateContainer: {
+    position: 'absolute',
     paddingTop: 40,
+    flexDirection: 'row'
 
   },
   name: {
     fontFamily: "Montserrat_700Bold",
     position: 'absolute',
-    paddingTop: 70,
+    paddingTop: 65,
     fontSize: 24,
   },
   item:{
@@ -178,32 +199,27 @@ circular: {
   borderRadius: 5,
 },
 search: {
-  paddingTop: 120,
-
-},
-searchInput: {
-  backgroundColor: '#FFFFFF',
+  marginTop: 110,
 
 },
 searchConatiner: {
   backgroundColor: '#FFFFFF',
-  borderRadius: 24,
-
+  height: 48,
+  borderRadius: 24
 
 },
 searchInputContainer: {
-  backgroundColor: '#FFFFFF',
-
-
+  backgroundColor: 'transparent',
+  borderRadius: 24,
+  marginTop: -10
 },
 preferencesTop: {
   paddingTop: 200,
 },
 preferences: {
   fontFamily: "Montserrat_600SemiBold",
-  // position: 'absolute',
-  // paddingTop: 200,
-  padding: 16,
+  position: 'relative',
+  paddingVertical: 20,
   fontSize: 18,
 
 },
