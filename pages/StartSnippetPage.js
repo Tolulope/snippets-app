@@ -1,86 +1,58 @@
-import { useNavigation } from '@react-navigation/core'
 
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-// import { Icon } from 'react-native-elements/dist/icons/Icon';
+import * as React from 'react';
+import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView } from 'react-native';
 
-import * as Icon from "react-native-feather";
-
-
-const SnippetPreview = (props) => {
-
-    const navigation = useNavigation()
-
-    // const viewSnippet = () => {
-    //     navigation.navigate('View Snippet')
-    // }
-
-
-
-
-    return ( 
-        <View style={styles.previewWrapper}>
+const StartSnippetPage = ({ navigation }) => {
+  return (
+    <View style={styles.previewWrapper}>
             <View style={styles.item}>
                 <View style={styles.topOfPreview}>
                     <View style={styles.logoAndHeading}>
-                    <View style={styles.ngoLogo}>
-                        <TouchableOpacity style={styles.square}></TouchableOpacity>
-                    </View>
                     <View style={styles.ngoInfo}>
-                        <Text style={styles.ngoName}>{props.ngoName}</Text>
+                        <Text style={styles.ngoName}>What you need to do</Text>
                         <View style={styles.ngoSubtitle}>
-                        <View style={styles.circularLogo}></View>
-                        <Text style={styles.lightText}>{props.ngoName}</Text>
-                        </View>
-                        <View style={styles.ngoSubtitle}>
-                        {/* <View> <Icon.Heart /></View> */}
-                        <View style={styles.circularLogo}></View>
-                        <Text style={styles.lightText}>{props.ngoName}</Text>
+                        {/* <View style={styles.circularLogo}></View> */}
+                        <Text style={styles.lightText}>Your mission, should you choose to accept is, to read and translate a document from English to Mandarin. Full professional proficiency or native / bilingual proficiency would be required.</Text>
                         </View>
                     </View>
                     </View>
-                    <View style={styles.circular}></View>
-                    {/* <View> <Icon.Heart stroke="blue"/></View> */}
                 </View>
-            
-                <View style={styles.timeWrapper}>
-                    <View style={styles.estimatedTime}>
-                        <Text style={styles.lightText}>Estimated Time</Text>
-                        <Text style={styles.text}>10 minutes</Text>
-                    </View>
+        </View>
 
-                    <View style={styles.allowedTime}>
-                        <Text style={styles.lightText}> Allowed Time</Text>
-                        <Text style={styles.text}>60 minutes</Text>
+        <View style={styles.previewButtons}>
 
-                    </View>         
-                </View>
-                <View style={styles.previewButtons}>
+<TouchableOpacity
+    style={styles.startNowButton}
+    // onPress={() => navigation.navigate('SnippetStackNavigator', {screen: 'Start Snippet'})}
+    onPress={() => navigation.navigate('Translation Snippet')}
 
-                    <TouchableOpacity
-                        style={styles.startNowButton}
-                        // onPress={() => navigation.navigate('SnippetStackNavigator', {screen: 'Start Snippet'})}
-                    >
-                        <Text style={styles.startNowText}> Start Now</Text>
-                    </TouchableOpacity>
+>
+    <Text style={styles.startNowText}>Resume</Text>
+</TouchableOpacity>
 
-                    <TouchableOpacity
-                        style={styles.viewSnippetButton}
-                        onPress={() => navigation.navigate('View Snippet')}
-                    >
-                        <Text style={styles.viewSnippetText}> View Snippet </Text>
-                    </TouchableOpacity>
+<TouchableOpacity
+    style={styles.startNowButton}
+    // onPress={() => navigation.navigate('SnippetStackNavigator', {screen: 'Start Snippet'})}
+    onPress={() => navigation.navigate('Acceuil')}
+
+>
+    <Text style={styles.startNowText}> Drop the Snippet</Text>
+</TouchableOpacity>
+
+</View>
 
 
-                </View>
-            </View>
+
+
         </View>
      );
 }
 
+export default StartSnippetPage;
+
 const styles = StyleSheet.create({
     previewWrapper: {
-        // paddingVertical: 50,
+        paddingVertical: 150,
     },
     topOfPreview: {
         flexDirection: 'row',
@@ -205,5 +177,3 @@ const styles = StyleSheet.create({
 
     },
 });
- 
-export default SnippetPreview;

@@ -8,6 +8,8 @@ import ProfilePage from "../pages/ProfilePage";
 
 import * as Icon from "react-native-feather";
 
+import { SnippetStackNavigator } from './StackNavigator';
+
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -22,8 +24,8 @@ const BottomTabNavigator = () => {
         },
       })}>
       <Tab.Screen
-        name="Acceuil"
-        component={HomePage}
+        name="Acceuil1"
+        component={SnippetStackNavigator}
         options={{
           tabBarLabel: 'Home',
           headerShown: false,

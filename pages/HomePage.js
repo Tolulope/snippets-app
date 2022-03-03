@@ -13,7 +13,9 @@ LogBox.ignoreLogs(['Setting a timer']);
 const HomePage = ({ navigation }) => {
 
   const [userData, setUserData] = useState([]);
+  const [userInfo, setUserInfo] = useState([]);
   let userlist = [];
+  let userinfo = [];
   // const db = app.firestore();
 
   
@@ -33,11 +35,23 @@ const HomePage = ({ navigation }) => {
                       allowed: documentSnapshot.data().allowedTime,
                       estimated: documentSnapshot.data().estimatedTime,
                       });
-      }); 
+
+        userinfo.push({
+          document: documentSnapshot.data().document,
+          needtodo: documentSnapshot.data().needtodo,
+          whoarewe: documentSnapshot.data().whoarewe,
+          level: documentSnapshot.data().level,
+          });
+
+
+      });
+      
+      
 
       // console.log(userlist)
 
       setUserData(userlist);
+      // setUserInfo(userinfo);
 
     }); //db.collection.get.then
 

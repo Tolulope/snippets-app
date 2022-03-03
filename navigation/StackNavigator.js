@@ -1,9 +1,18 @@
 
   
 import React from "react";
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator, HeaderBackButton } from '@react-navigation/native-stack';
 import { BottomTabNavigator } from './TabNavigator'
+
 import LoginScreen from '../pages/LoginScreen';
+
+import ViewSnippet from '../pages/ViewSnippetPage';
+import StartSnippet from '../pages/StartSnippetPage';
+import TranslationSnippet from '../pages/TranslationSnippetPage';
+
+import HomePage from "../pages/HomePage";
+
+
 
 
 const Stack = createNativeStackNavigator();
@@ -32,5 +41,25 @@ const MainStackNavigator = () => {
   );
 };
 
+const SnippetStackNavigator = ( {navigation} ) => {
+  return (
+    <Stack.Navigator
+        initialRouteName="Acceuil"
+        screenOptions={{
+          // headerStyle: { backgroundColor: '#633689' },
+          // headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+          // headerShown: false,
+        }}>
+        <Stack.Screen options={{ headerShown: false }} name="Acceuil" component={HomePage} />
+        <Stack.Screen options={{ headerMode: 'screen', headerTitle: '',
+                                             }} name="View Snippet" component={ViewSnippet} />
+        <Stack.Screen options={{ headerMode: 'screen', headerTitle: '', }} name="Start Snippet" component={StartSnippet} />
+        <Stack.Screen options={{ headerMode: 'screen', headerTitle: '', }} name="Translation Snippet" component={TranslationSnippet} />
+        {/* <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ title: 'Tab Navigation' }}/> */}
+      </Stack.Navigator>
+  );
+};
 
-export { MainStackNavigator };
+
+export { MainStackNavigator, SnippetStackNavigator };
