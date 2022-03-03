@@ -5,6 +5,7 @@ import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView } from 'react-na
 import { SearchBar } from 'react-native-elements';
 import SnippetPreview from '../components/SnippetPreview';
 import { LogBox } from 'react-native';
+import { Feather } from '@expo/vector-icons'; 
 
 
 // import { initializeApp } from 'firebase/app';
@@ -78,10 +79,13 @@ useEffect(() => {
   return (
     <ScrollView style={{ flex: 1, marginHorizontal: 16, marginTop: 40 }} showsVerticalScrollIndicator={false}>
         <View style={styles.view}>
-
+          <View style={styles.dateContainer}>
+          <Feather name="sun" size={16} color='#36B6B6' />
           <Text style={styles.date}>
             Friday 11 Feb
           </Text>
+          </View>
+          
 
           <Text style={styles.name}>
             Hi, Alejo Navarro
@@ -139,17 +143,22 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   date: {
-    position: 'absolute',
-    fontFamily: "Montserrat_400Regular",
+    fontFamily: "Montserrat_600SemiBold",
     color: '#36B6B6',
     fontSize: 14,
+    marginLeft: 5
+
+  },
+  dateContainer: {
+    position: 'absolute',
     paddingTop: 40,
+    flexDirection: 'row'
 
   },
   name: {
     fontFamily: "Montserrat_700Bold",
     position: 'absolute',
-    paddingTop: 70,
+    paddingTop: 65,
     fontSize: 24,
   },
   item:{
@@ -185,13 +194,9 @@ circular: {
   borderRadius: 5,
 },
 search: {
-  paddingTop: 120,
+  marginTop: 110,
 
 },
-// searchInput: {
-//   backgroundColor: '#FFFFFF',
-
-// },
 searchConatiner: {
   backgroundColor: '#FFFFFF',
   height: 48,
@@ -208,9 +213,8 @@ preferencesTop: {
 },
 preferences: {
   fontFamily: "Montserrat_600SemiBold",
-  // position: 'absolute',
-  // paddingTop: 200,
-  paddingVertical: 16,
+  position: 'relative',
+  paddingVertical: 20,
   fontSize: 18,
 
 },

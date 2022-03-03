@@ -7,7 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Ionicons } from '@expo/vector-icons';
 
 import AppLoading from 'expo-app-loading';
 import { useFonts } from '@expo-google-fonts/montserrat';
@@ -55,9 +56,9 @@ function TabStack() {
         options={{
           tabBarLabel: 'Home',
           headerShown: false,
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="home" color={color} size={size} />
-          // ),
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
         }}  />
         <Tab.Screen
         name="Biblioteque"
@@ -65,9 +66,9 @@ function TabStack() {
         options={{
           tabBarLabel: 'Library',
           headerShown: false,
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="settings" color={color} size={size} />
-          // ),
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="library" size={size} color={color} />
+          ),
         }} />
       <Tab.Screen
         name="Profil"
@@ -75,9 +76,9 @@ function TabStack() {
         options={{
           tabBarLabel: 'Profile',
           headerShown: false,
-          // tabBarIcon: ({ color, size }) => (
-          //   <MaterialCommunityIcons name="settings" color={color} size={size} />
-          // ),
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),
         }} />
     </Tab.Navigator>
   );
