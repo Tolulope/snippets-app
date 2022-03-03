@@ -1,39 +1,36 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { Feather } from '@expo/vector-icons'; 
 
 const SnippetPreview = (props) => {
     return ( 
-        <View style={styles.item}>
+        <TouchableOpacity style={styles.item}>
             <View style={styles.topOfPreview}>
                 <View style={styles.logoAndHeading}>
-                <View style={styles.ngoLogo}>
                     <TouchableOpacity style={styles.square}></TouchableOpacity>
-                </View>
-                <View style={styles.ngoInfo}>
-                    <Text style={styles.ngoName}>{props.ngoName}</Text>
-                    <View style={styles.ngoSubtitle}>
-                    <View style={styles.circularLogo}></View>
-                    <Text style={styles.lightText}>{props.ngoName}</Text>
+                    <View style={styles.ngoInfo}>
+                        <Text style={styles.ngoName}>{props.ngoName}</Text>
+                        <View style={styles.ngoSubtitle}>
+                            <Feather name="tag" size={16} color="#36B6B6" style={{marginRight: 4}}/>  
+                            <Text style={styles.lightText}>{props.ngoName}</Text>
+                        </View>
+                        <View style={styles.ngoSubtitle}>
+                            <Feather name="tag" size={16} color="#36B6B6" style={{marginRight: 4}}/>  
+                            <Text style={styles.lightText}>{props.ngoName}</Text>
+                        </View>
                     </View>
-                    <View style={styles.ngoSubtitle}>
-                    <View style={styles.circularLogo}></View>
-                    <Text style={styles.lightText}>{props.ngoName}</Text>
-                    </View>
                 </View>
-                </View>
-                <View style={styles.circular}></View>
+                <TouchableOpacity><Feather name="heart" size={24} color="#CDCDCD" /></TouchableOpacity>
             </View>
-        
             <View style={styles.timeWrapper}>
                 <View style={styles.estimatedTime}>
                     <Text style={styles.lightText}>Estimated Time</Text>
                     <Text style={styles.text}>10 minutes</Text>
                 </View>
 
-                <View style={styles.allowedTime}>
+                <View >
                     <Text style={styles.lightText}> Allowed Time</Text>
                     <Text style={styles.text}>60 minutes</Text>
-
                 </View>         
             </View>
             <View style={styles.previewButtons}>
@@ -51,10 +48,8 @@ const SnippetPreview = (props) => {
                 >
                     <Text style={styles.viewSnippetText}> View Snippet </Text>
                 </TouchableOpacity>
-
-
             </View>
-        </View>
+        </TouchableOpacity>
      );
 }
 
@@ -66,21 +61,15 @@ const styles = StyleSheet.create({
     },
     item:{
         backgroundColor: '#FFF',
-        padding: 9,
+        padding: 20,
         borderRadius: 10,
         flexDirection: 'column',
         // alignItems: 'center',
         // justifyContent: 'space-between',
         marginBottom: 10, 
     },
-    ngoLogo:{
-        // flexDirection: 'row',
-        // alignItems: 'center',
-        // flexWrap: 'wrap'
-    },
     logoAndHeading: {
         flexDirection: 'row',
-
     },
     square: {
         width: 100,
@@ -88,7 +77,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#55bcf6',
         opacity: 0.4,
         borderRadius: 5,
-        marginRight: 15,
     },
     itemText: {
         maxWidth: '80%',
@@ -110,42 +98,36 @@ const styles = StyleSheet.create({
         // justifyContent: 'flex-end',
     },
     text: {
-        fontFamily: "Montserrat_400Regular",
-        fontSize: 16,
+        fontFamily: "Montserrat_600SemiBold",
+        fontSize: 18,
+        color: '#7c7c7c'
     },
     lightText: {
         fontFamily: "Montserrat_300Light",
-        fontSize: 12,
+        fontSize: 14,
     },
     ngoInfo: {
-
+        marginLeft: 15
     },
     ngoName: {
         fontFamily: "Montserrat_700Bold",
-        paddingBottom: 20,
+        color: '#39B0B0',
+        paddingBottom: 10,
         fontSize: 20,
-
-
     },
     timeWrapper:{
         flexDirection: 'row',
         justifyContent: 'flex-start',
-
-
+        marginTop: 10
     },
     estimatedTime: {
         paddingRight: 20,
         justifyContent: 'flex-start',
 
     },
-    allowedTime: {
-
-    },
     previewButtons: {
         justifyContent: 'space-between',
         flexDirection: 'row',
-
-
     },
     startNowButton: {
         alignItems: 'center',
@@ -155,7 +137,6 @@ const styles = StyleSheet.create({
         marginTop: 16,
         borderRadius: 10,
         paddingHorizontal: 20,
-
     },
     startNowText: {
         fontFamily: "Montserrat_400Regular",
@@ -179,6 +160,7 @@ const styles = StyleSheet.create({
     },
     ngoSubtitle: {
         flexDirection: 'row',
+        marginBottom: 4
 
     },
 });
