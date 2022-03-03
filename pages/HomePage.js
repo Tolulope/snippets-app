@@ -73,7 +73,7 @@ const HomePage = ({ navigation }) => {
 
 useEffect(() => {
   getUser();
-}, [userData]);
+}, []);
 
   return (
     <SafeAreaView style={{ flex: 1, padding: 16 }}>
