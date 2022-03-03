@@ -3,67 +3,62 @@ import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 const SnippetPreview = (props) => {
     return ( 
-        <View style={styles.previewWrapper}>
-            <View style={styles.item}>
-                <View style={styles.topOfPreview}>
-                    <View style={styles.logoAndHeading}>
-                    <View style={styles.ngoLogo}>
-                        <TouchableOpacity style={styles.square}></TouchableOpacity>
-                    </View>
-                    <View style={styles.ngoInfo}>
-                        <Text style={styles.ngoName}>{props.ngoName}</Text>
-                        <View style={styles.ngoSubtitle}>
-                        <View style={styles.circularLogo}></View>
-                        <Text style={styles.lightText}>{props.ngoName}</Text>
-                        </View>
-                        <View style={styles.ngoSubtitle}>
-                        <View style={styles.circularLogo}></View>
-                        <Text style={styles.lightText}>{props.ngoName}</Text>
-                        </View>
-                    </View>
-                    </View>
-                    <View style={styles.circular}></View>
+        <View style={styles.item}>
+            <View style={styles.topOfPreview}>
+                <View style={styles.logoAndHeading}>
+                <View style={styles.ngoLogo}>
+                    <TouchableOpacity style={styles.square}></TouchableOpacity>
                 </View>
-            
-                <View style={styles.timeWrapper}>
-                    <View style={styles.estimatedTime}>
-                        <Text style={styles.lightText}>Estimated Time</Text>
-                        <Text style={styles.text}>10 minutes</Text>
+                <View style={styles.ngoInfo}>
+                    <Text style={styles.ngoName}>{props.ngoName}</Text>
+                    <View style={styles.ngoSubtitle}>
+                    <View style={styles.circularLogo}></View>
+                    <Text style={styles.lightText}>{props.ngoName}</Text>
                     </View>
-
-                    <View style={styles.allowedTime}>
-                        <Text style={styles.lightText}> Allowed Time</Text>
-                        <Text style={styles.text}>60 minutes</Text>
-
-                    </View>         
+                    <View style={styles.ngoSubtitle}>
+                    <View style={styles.circularLogo}></View>
+                    <Text style={styles.lightText}>{props.ngoName}</Text>
+                    </View>
                 </View>
-                <View style={styles.previewButtons}>
-
-                    <TouchableOpacity
-                        style={styles.startNowButton}
-                        // onPress={() => navigation.navigate('Acceuil')}
-                    >
-                        <Text style={styles.startNowText}> Start Now</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                        style={styles.viewSnippetButton}
-                        // onPress={() => navigation.navigate('Acceuil')}
-                    >
-                        <Text style={styles.viewSnippetText}> View Snippet </Text>
-                    </TouchableOpacity>
-
-
                 </View>
+                <View style={styles.circular}></View>
+            </View>
+        
+            <View style={styles.timeWrapper}>
+                <View style={styles.estimatedTime}>
+                    <Text style={styles.lightText}>Estimated Time</Text>
+                    <Text style={styles.text}>10 minutes</Text>
+                </View>
+
+                <View style={styles.allowedTime}>
+                    <Text style={styles.lightText}> Allowed Time</Text>
+                    <Text style={styles.text}>60 minutes</Text>
+
+                </View>         
+            </View>
+            <View style={styles.previewButtons}>
+
+                <TouchableOpacity
+                    style={styles.startNowButton}
+                    // onPress={() => navigation.navigate('Acceuil')}
+                >
+                    <Text style={styles.startNowText}> Start Now</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.viewSnippetButton}
+                    // onPress={() => navigation.navigate('Acceuil')}
+                >
+                    <Text style={styles.viewSnippetText}> View Snippet </Text>
+                </TouchableOpacity>
+
+
             </View>
         </View>
      );
 }
 
 const styles = StyleSheet.create({
-    previewWrapper: {
-        // paddingVertical: 50,
-    },
     topOfPreview: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -76,7 +71,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         // alignItems: 'center',
         // justifyContent: 'space-between',
-        marginBottom: 20, 
+        marginBottom: 10, 
     },
     ngoLogo:{
         // flexDirection: 'row',

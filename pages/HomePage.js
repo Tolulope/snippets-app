@@ -76,7 +76,7 @@ useEffect(() => {
 }, [userData]);
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: 16 }}>
+    <ScrollView style={{ flex: 1, marginHorizontal: 16, marginTop: 40 }} showsVerticalScrollIndicator={false}>
         <View style={styles.view}>
 
           <Text style={styles.date}>
@@ -98,14 +98,13 @@ useEffect(() => {
               // onChangeText={updateSearch}
               // value={search}
             />
-
             <Text style={styles.preferences}>
-              Based on your preferences
+              Based on your skills and interests
             </Text>
 
           </View>
 
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
         {
         userData.map((item, index) => {
               return ( 
@@ -116,7 +115,7 @@ useEffect(() => {
         </ScrollView>
         
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 
@@ -189,20 +188,20 @@ search: {
   paddingTop: 120,
 
 },
-searchInput: {
-  backgroundColor: '#FFFFFF',
+// searchInput: {
+//   backgroundColor: '#FFFFFF',
 
-},
+// },
 searchConatiner: {
   backgroundColor: '#FFFFFF',
-  borderRadius: 24,
-
+  height: 48,
+  borderRadius: 24
 
 },
 searchInputContainer: {
-  backgroundColor: '#FFFFFF',
-
-
+  backgroundColor: 'transparent',
+  borderRadius: 24,
+  marginTop: -10
 },
 preferencesTop: {
   paddingTop: 200,
@@ -211,7 +210,7 @@ preferences: {
   fontFamily: "Montserrat_600SemiBold",
   // position: 'absolute',
   // paddingTop: 200,
-  padding: 16,
+  paddingVertical: 16,
   fontSize: 18,
 
 },
