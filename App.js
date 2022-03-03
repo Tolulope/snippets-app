@@ -5,7 +5,7 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons } from '@expo/vector-icons';
@@ -35,9 +35,23 @@ import {  Montserrat_100Thin,
 import HomePage from './pages/HomePage';
 import ProfilePage from './pages/ProfilePage';
 import LibraryPage from './pages/LibraryPage';
+import CompletedPage from './pages/CompletedPage';
+import LikedPage from './pages/LikedPage';
+import InProgressPage from './pages/InProgressPage';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const TopTab = createMaterialTopTabNavigator();
+
+function TopTabs() {
+  return (
+    <TopTab.Navigator>
+      <TopTab.Screen name="InProgress" component={InProgressPage} />
+      <TopTab.Screen name="Liked" component={LikedPage} />
+      <TopTab.Screen name="Completed" component={CompletedPage} />
+    </TopTab.Navigator>
+  );
+}
 
 function TabStack() {
   return (
@@ -62,7 +76,7 @@ function TabStack() {
         }}  />
         <Tab.Screen
         name="Biblioteque"
-        component={LibraryPage}
+        component={TopTabs}
         options={{
           tabBarLabel: 'Library',
           headerShown: false,
