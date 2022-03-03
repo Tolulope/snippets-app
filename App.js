@@ -45,7 +45,17 @@ const TopTab = createMaterialTopTabNavigator();
 
 function TopTabs() {
   return (
-    <TopTab.Navigator>
+    <TopTab.Navigator 
+      screenOptions={{
+        tabBarActiveTintColor: '#36B6B6',
+        tabBarInactiveTintColor: '#2D3142',
+        tabBarLabelStyle: { fontSize: 14 },
+        tabBarIndicatorStyle: { backgroundColor: '#36B6B6' },
+        tabBarStyle: { backgroundColor: 'transparent' },
+      }}
+      style={{ marginTop: 40}}
+      title='Library'
+    >
       <TopTab.Screen name="InProgress" component={InProgressPage} />
       <TopTab.Screen name="Liked" component={LikedPage} />
       <TopTab.Screen name="Completed" component={CompletedPage} />
