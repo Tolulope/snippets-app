@@ -133,7 +133,7 @@ if (!fontsLoaded) {
 } else {
   return (
     <NavigationContainer>
-      <MainStackNavigator />
+      <TabStack />
     </NavigationContainer>
   );
 }

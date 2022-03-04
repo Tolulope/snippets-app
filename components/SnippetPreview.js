@@ -2,14 +2,11 @@ import { useNavigation } from '@react-navigation/core'
 
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-<<<<<<< HEAD
 // import { Icon } from 'react-native-elements/dist/icons/Icon';
 
 import * as Icon from "react-native-feather";
 
-=======
 import { Feather } from '@expo/vector-icons'; 
->>>>>>> design
 
 const SnippetPreview = (props) => {
 
@@ -34,12 +31,10 @@ const SnippetPreview = (props) => {
                             <Text style={styles.lightText}>{props.ngoName}</Text>
                         </View>
                         <View style={styles.ngoSubtitle}>
-=======
                             <Feather name="tag" size={16} color="#36B6B6" style={{marginRight: 4}}/>  
                             <Text style={styles.lightText}>{props.ngoName}</Text>
                         </View>
                     </View>
->>>>>>> design
                 </View>
                 <TouchableOpacity><Feather name="heart" size={24} color="#CDCDCD" /></TouchableOpacity>
             </View>
