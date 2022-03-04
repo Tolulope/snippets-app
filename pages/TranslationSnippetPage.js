@@ -10,6 +10,14 @@ const TranslationSnippetPage = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
 
+  const goToHome = () => {
+    setModalVisible(!modalVisible);
+    navigation.navigate('Acceuil');
+
+  }
+
+
+
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
@@ -35,7 +43,7 @@ const TranslationSnippetPage = ({ navigation }) => {
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
+              onPress={goToHome}
             >
               <Text style={styles.textStyle}>Back to Home</Text>
             </Pressable>
