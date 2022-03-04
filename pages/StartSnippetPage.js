@@ -1,10 +1,16 @@
 
 import * as React from 'react';
-import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, Image, ScrollView } from 'react-native';
 
 const StartSnippetPage = ({ navigation }) => {
   return (
+    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.scrollView}>
     <View style={styles.previewWrapper}>
+           <Image 
+              style={styles.profilePic}
+              source={require('../assets/img/pets-in-need.jpeg')}
+              />
             <View style={styles.item}>
                 <View style={styles.topOfPreview}>
                     <View style={styles.logoAndHeading}>
@@ -77,12 +83,22 @@ const StartSnippetPage = ({ navigation }) => {
 
 
         </View>
+        </ScrollView>
+    </SafeAreaView>
      );
 }
 
 export default StartSnippetPage;
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        paddingTop: 20,
+      },
+      scrollView: {
+        // backgroundColor: 'pink',
+        marginHorizontal: 20,
+      },
     previewWrapper: {
         paddingVertical: 150,
         paddingHorizontal: 20,
@@ -220,4 +236,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         paddingHorizontal: 5,
     },
+    profilePic: {
+        alignItems: 'center',
+        width: 50,
+        height:50,
+        borderRadius: 125, //should be half of the width and height to make it circular
+        paddingVertical: 20,
+      }, 
 });

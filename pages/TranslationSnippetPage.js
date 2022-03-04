@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, TextInput, Modal, Pressable, Image} from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, TextInput, Modal, Pressable, Image, ScrollView} from 'react-native';
 import { useEffect, useState } from 'react'
 
 
@@ -11,7 +11,8 @@ const TranslationSnippetPage = ({ navigation }) => {
 
 
   return (
-
+    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.scrollView}>
     <View style={styles.previewWrapper}>
         <Modal
         animationType="slide"
@@ -41,6 +42,10 @@ const TranslationSnippetPage = ({ navigation }) => {
           </View>
         </View>
       </Modal>
+      <Image 
+              style={styles.profilePic}
+              source={require('../assets/img/pets-in-need.jpeg')}
+              />
              <View style={styles.item}>
                 <View style={styles.topOfPreview}>
                     <View style={styles.logoAndHeading}>
@@ -105,11 +110,21 @@ onPress={() => setModalVisible(true)}
 
 
     </View>
+      </ScrollView>
+      </SafeAreaView>
  );
 }
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 20,
+  },
+  scrollView: {
+    // backgroundColor: 'pink',
+    marginHorizontal: 20,
+  },
   previewWrapper: {
       paddingVertical: 150,
       paddingHorizontal: 20,
@@ -292,6 +307,13 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center"
   },
+  profilePic: {
+    alignItems: 'center',
+    width: 50,
+    height:50,
+    borderRadius: 125, //should be half of the width and height to make it circular
+    paddingVertical: 20,
+  }, 
 });
 
 export default TranslationSnippetPage;

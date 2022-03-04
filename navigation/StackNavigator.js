@@ -55,7 +55,7 @@ const SnippetStackNavigator = ( {navigation} ) => {
         <Stack.Screen options={{ headerMode: 'screen', headerTitle: '',
                                              }} name="View Snippet" component={ViewSnippet} />
         <Stack.Screen options={{ headerMode: 'screen', headerTitle: '', }} name="Start Snippet" component={StartSnippet} />
-        <Stack.Screen options={{ headerMode: 'screen', headerTitle: '', }} name="Translation Snippet" component={TranslationSnippet} />
+        <Stack.Screen options={{ headerMode: 'screen', headerTitle: ''}} name="Translation Snippet" component={TranslationSnippet} />
         {/* <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ title: 'Tab Navigation' }}/> */}
       </Stack.Navigator>
   );
