@@ -88,9 +88,10 @@ const TranslationSnippetPage = ({ navigation }) => {
                     <Text style={styles.ngoName}>Your Translation</Text>
                     <View style={styles.ngoSubtitle}>
                     <TextInput
-                      placeholder="Type here..."
-                      value={translation}
-                      style={styles.input}
+                       placeholder="Type here..."
+                       value={translation}
+                       onChangeText={text => setTranslation(text)}
+                       style={styles.input}
                     />
 
                     </View>
