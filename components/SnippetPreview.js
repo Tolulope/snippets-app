@@ -2,6 +2,10 @@ import { useNavigation } from '@react-navigation/core'
 
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+// import { Icon } from 'react-native-elements/dist/icons/Icon';
+
+import * as Icon from "react-native-feather";
+
 import { Feather } from '@expo/vector-icons'; 
 
 const SnippetPreview = (props) => {
