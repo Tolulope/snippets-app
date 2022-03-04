@@ -202,13 +202,12 @@ const styles = StyleSheet.create({
       button: {
         borderRadius: 20,
         padding: 10,
-        elevation: 2
-      },
-      buttonOpen: {
-        backgroundColor: "#F194FF",
+        marginTop: 5,
+        width: 200
       },
       buttonClose: {
-        backgroundColor: "#2196F3",
+        backgroundColor: "#36B6B6",
+        width: 250
       },
       textStyle: {
         color: "white",
@@ -217,6 +216,7 @@ const styles = StyleSheet.create({
       },
       modalText: {
         marginBottom: 15,
+        fontFamily: "Montserrat_400Regular",
         textAlign: "center"
       },
       container: {

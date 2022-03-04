@@ -104,8 +104,6 @@ useEffect(() => {
               inputStyle={styles.searchInput}
               containerStyle={styles.searchConatiner}
               inputContainerStyle={styles.searchInputContainer}
-              // onChangeText={updateSearch}
-              // value={search}
             />
             <Text style={styles.preferences}>
               Based on your skills and interests
