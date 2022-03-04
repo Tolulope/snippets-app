@@ -9,6 +9,7 @@ const ViewSnippetPage = ({ route }) => {
 
 const navigation = useNavigation();
 const { ngo } = route.params;
+
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
