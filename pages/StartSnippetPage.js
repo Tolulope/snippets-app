@@ -1,16 +1,90 @@
 
 import * as React from 'react';
-import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, Image, ScrollView } from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, Image, ScrollView, Modal, Pressable } from 'react-native';
+import { useEffect, useState } from 'react';
+import * as Progress from 'react-native-progress';
+
+
 
 const StartSnippetPage = ({ navigation }) => {
+    const [modalVisible, setModalVisible] = useState(false);
+    const [confirmModalVisible, setConfirmModalVisible] = useState(false);
+
+    
+    const goToHome = () => {
+        setConfirmModalVisible(!confirmModalVisible);
+        navigation.navigate('Acceuil');
+    
+      }
+
+    const switchModals = () => {
+        setModalVisible(!modalVisible);
+        setConfirmModalVisible(true);
+
+    }
+
+
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
+    <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Drop the Snippet</Text>
+            <Text style={styles.modalText}>Are you sure you want to drop this snippet? That means you no longer want to complete the task and will give it up completely. All work will be tossed. </Text>
+
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Cancel</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={switchModals}
+            >
+              <Text style={styles.textStyle}>Drop</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={confirmModalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setConfirmModalVisible(!confirmModalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Confirmation</Text>
+            <Text style={styles.modalText}>You have dropped the snippet. </Text>
+
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={goToHome}
+            >
+              <Text style={styles.textStyle}>Close</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     <View style={styles.previewWrapper}>
            <Image 
               style={styles.profilePic}
               source={require('../assets/img/pets-in-need.jpeg')}
               />
+            <Progress.Bar progress={0.3} width={200} />
             <View style={styles.item}>
                 <View style={styles.topOfPreview}>
                     <View style={styles.logoAndHeading}>
@@ -71,7 +145,7 @@ const StartSnippetPage = ({ navigation }) => {
 <TouchableOpacity
     style={styles.viewSnippetButton}
     // onPress={() => navigation.navigate('SnippetStackNavigator', {screen: 'Start Snippet'})}
-    onPress={() => navigation.navigate('Acceuil')}
+    onPress={() => setModalVisible(true)}
 
 >
     <Text style={styles.viewSnippetText}> Drop the Snippet</Text>
@@ -230,7 +304,47 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
 
     },
-
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+      },
+      buttonOpen: {
+        backgroundColor: "#F194FF",
+      },
+      buttonClose: {
+        backgroundColor: "#2196F3",
+      },
+      textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+      },
+      modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+      },
     threecolumn: {
         // alignItems: 'center',
         flexDirection: 'column',

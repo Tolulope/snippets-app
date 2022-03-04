@@ -62,8 +62,10 @@ const navigation = useNavigation()
 
 <TouchableOpacity
     style={styles.startNowButton}
-    onPress={() => navigation.navigate('Translation Snippet')}
+
     // onPress={() => navigation.pop()}
+    onPress={() => navigation.navigate('Start Snippet')}
+
 
 >
     <Text style={styles.startNowText}> Start Now</Text>

@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, TextInput, Modal, Pressable, Image, ScrollView} from 'react-native';
 import { useEffect, useState } from 'react'
+import * as Progress from 'react-native-progress';
+
 
 
 const TranslationSnippetPage = ({ navigation }) => {
@@ -40,6 +42,12 @@ const TranslationSnippetPage = ({ navigation }) => {
               source={require('../assets/img/pets-in-need.jpeg')}
               />
             <Text style={styles.modalText}>Pets in Need</Text>
+            <View style={styles.levels}>
+            <Text style={styles.modalText}>Level 3</Text>
+            <Text style={styles.modalText}>Level 4</Text>
+            </View>
+            <Progress.Bar progress={0.5} width={200} />
+
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
@@ -54,6 +62,9 @@ const TranslationSnippetPage = ({ navigation }) => {
               style={styles.profilePic}
               source={require('../assets/img/pets-in-need.jpeg')}
               />
+
+            <Progress.Bar progress={0.3} width={200} />
+
              <View style={styles.item}>
                 <View style={styles.topOfPreview}>
                     <View style={styles.logoAndHeading}>
@@ -323,6 +334,10 @@ const styles = StyleSheet.create({
     borderRadius: 125, //should be half of the width and height to make it circular
     paddingVertical: 20,
   }, 
+  levels: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  }
 });
 
 export default TranslationSnippetPage;
