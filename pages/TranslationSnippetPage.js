@@ -6,10 +6,11 @@ import * as Progress from 'react-native-progress';
 import { Feather } from '@expo/vector-icons';
 
 
-const TranslationSnippetPage = ({ navigation }) => {
+const TranslationSnippetPage = ({ navigation, route }) => {
 
   const [translation, setTranslation] = useState('')
   const [modalVisible, setModalVisible] = useState(false);
+  const { ngo } = route.params;
 
 
   const goToHome = () => {
@@ -41,7 +42,7 @@ const TranslationSnippetPage = ({ navigation }) => {
               // style={styles.profilePic}
               source={require('../assets/img/pets-in-need.jpeg')}
               />
-            <Text style={styles.modalText}>Pets in Need</Text>
+            <Text style={styles.modalText}>{ngo.name}</Text>
             <View style={styles.levels}>
             <Text style={styles.modalText}>Level 3</Text>
             <Text style={styles.modalText}>Level 4</Text>
@@ -79,7 +80,7 @@ const TranslationSnippetPage = ({ navigation }) => {
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 5}}>
                 <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16}}>Time Left: </Text>
-                <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16, color: '#EE2E2E'}}>60 minutes</Text>
+                <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16, color: '#EE2E2E'}}>{ngo.allowed} minutes</Text>
                 </View>
                 
               <Progress.Bar progress={0.01} width={null} unfilledColor={'#ffffff'} color={'#36B6B6'} height={8}/>
@@ -88,13 +89,13 @@ const TranslationSnippetPage = ({ navigation }) => {
               <View style={styles.item}>
                 <Text style={styles.ngoName}>What you need to do</Text>
                 <View style={styles.ngoSubtitle}>
-                <Text style={styles.lightText}>Your mission, should you choose to accept is, to read and translate a document from English to Mandarin. Full professional proficiency or native / bilingual proficiency would be required.</Text>
+                <Text style={styles.lightText}>{ngo.what}</Text>
                 </View>
             </View>
             <View style={styles.item}>
                 <Text style={styles.ngoName}>Original Document</Text>
                 <View style={styles.ngoSubtitle}>
-                <Text style={styles.lightText}>Dogs, often hailed as humans’ best friends, have been the topic of many scientific studies looking into how they might boost our well-being. In this Spotlight, well explain how your friendly pup can benefit your health across the board.</Text>
+                <Text style={styles.lightText}>{ngo.original}</Text>
                 </View>
             </View>
             <View style={styles.item}>

@@ -73,6 +73,26 @@ const HomePage = ({ navigation }) => {
       what: "Your mission, should you choose to accept is, to add Japanese subtitles for the following 5-minute video..",
       original: "Esta es una pieza de traducción muy breve que usaremos como marcador de posición por el momento. Sea amable con nosotros, estamos haciendo nuestro mejor esfuerzo y definitivamente trabajando en esto demasiado tarde en la noche."
     },
+    {
+      name: "Mercy House", 
+      subtitle1: "TV Show",
+      subtitle2: "Brain Storm",
+      allowed: 10,
+      estimated: 80,
+      who: "Mercy Housing is redefining affordable, low-income housing. We’re a national nonprofit organization that is working to build a more humane world where communities are healthy and all people can develop their full potential. Mercy Housing is one of the nation’s largest affordable housing organizations. We participate in the development, preservation, management and/or financing of affordable, program-enriched housing across the country. We acquire and renovate existing housing, as well as develop new affordable rental properties.",
+      what: "Your mission, should you choose to accept is,  to brain storm game ideas for our the Live At-Home Variety Show we hold every month!.",
+      original: "Esta es una pieza de traducción muy breve que usaremos como marcador de posición por el momento. Sea amable con nosotros, estamos haciendo nuestro mejor esfuerzo y definitivamente trabajando en esto demasiado tarde en la noche."
+    },
+    {
+      name: "RISE", 
+      subtitle1: "Screen Applications",
+      subtitle2: "Academic Skills",
+      allowed: 90,
+      estimated: 12,
+      who: "RISE was founded because we firmly believe that children living in the East Palo Alto community deserve the same opportunities as those in neighboring communities. RISE serves to close the education and opportunity gaps that exist between East Palo Alto and its neighboring communities. We empower our youth to create their own vision for the future and foster their self-confidence to make it happen. It is our intention that students leave RISE feeling proud of their accomplishments and eager to inspire future generations to make a lasting impact on their community.",
+      what: "Your mission, should you choose to accept is,  to screen applications from people who would like to be mentors and work with students one-on-one and in small groups to improve their academic skills, with a focus on reading and math. Please pick out the applications that you find fit and tell us what you think..",
+      original: "Esta es una pieza de traducción muy breve que usaremos como marcador de posición por el momento. Sea amable con nosotros, estamos haciendo nuestro mejor esfuerzo y definitivamente trabajando en esto demasiado tarde en la noche."
+    },
 
   ];
 

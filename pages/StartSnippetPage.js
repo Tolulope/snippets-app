@@ -6,9 +6,10 @@ import * as Progress from 'react-native-progress';
 import { Feather } from '@expo/vector-icons';
 
 
-const StartSnippetPage = ({ navigation }) => {
+const StartSnippetPage = ({ navigation, route }) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [confirmModalVisible, setConfirmModalVisible] = useState(false);
+    const { ngo } = route.params;
 
     
     const goToHome = () => {
@@ -105,7 +106,7 @@ const StartSnippetPage = ({ navigation }) => {
             <View style={styles.item}>
                 <Text style={styles.ngoName}>What you need to do</Text>
                 <View style={styles.ngoSubtitle}>
-                <Text style={styles.lightText}>Your mission, should you choose to accept is, to read and translate a document from English to Mandarin. Full professional proficiency or native / bilingual proficiency would be required.</Text>
+                <Text style={styles.lightText}>{ngo.what}</Text>
                 </View>
             </View>
 
@@ -122,14 +123,14 @@ const StartSnippetPage = ({ navigation }) => {
                     <View style={styles.threecolumn}>
                         <Text style={styles.lightText}> Time </Text>
                         <View style={styles.ngoSubtitle}>
-                        <Text style={styles.timeBox}> 10 minutes</Text>
+                        <Text style={styles.timeBox}>{ngo.estimated} minutes</Text>
                         </View>
                     </View>
 
                     <View style={styles.threecolumn}>
                         <Text style={styles.lightText}> Allowed Time </Text>
                         <View style={styles.ngoSubtitle}>
-                        <Text style={styles.timeBox}> 60 minutes </Text>
+                        <Text style={styles.timeBox}>{ngo.allowed} minutes </Text>
                         </View>
                     </View>
 
@@ -146,7 +147,7 @@ const StartSnippetPage = ({ navigation }) => {
 <TouchableOpacity
     style={styles.startNowButton}
     // onPress={() => navigation.navigate('SnippetStackNavigator', {screen: 'Start Snippet'})}
-    onPress={() => navigation.navigate('Translation Snippet')}
+    onPress={() => navigation.navigate('Translation Snippet', {ngo: ngo})}
 
 >
     <Text style={styles.startNowText}>Resume</Text>
