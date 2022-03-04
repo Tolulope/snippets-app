@@ -15,9 +15,9 @@ const SnippetPreview = (props) => {
     // const viewSnippet = () => {
     //     navigation.navigate('View Snippet')
     // }
+    const ngo = props.ngo;
 
-
-
+    //console.log(ngo.name);
 
     return ( 
         <TouchableOpacity style={styles.item}>
@@ -25,14 +25,14 @@ const SnippetPreview = (props) => {
                 <View style={styles.logoAndHeading}>
                     <TouchableOpacity style={styles.square}></TouchableOpacity>
                     <View style={styles.ngoInfo}>
-                        <Text style={styles.ngoName}>{props.ngoName}</Text>
+                        <Text style={styles.ngoName}>{ngo.name}</Text>
                         <View style={styles.ngoSubtitle}>
                             <Feather name="tag" size={16} color="#36B6B6" style={{marginRight: 4}}/>  
-                            <Text style={styles.lightText}>{props.ngoName}</Text>
+                            <Text style={styles.lightText}>{ngo.subtitle1}</Text>
                         </View>
                         <View style={styles.ngoSubtitle}>
                             <Feather name="tag" size={16} color="#36B6B6" style={{marginRight: 4}}/>  
-                            <Text style={styles.lightText}>{props.ngoName}</Text>
+                            <Text style={styles.lightText}>{ngo.subtitle2}</Text>
                         </View>
                     </View>
                 </View>
@@ -41,12 +41,12 @@ const SnippetPreview = (props) => {
             <View style={styles.timeWrapper}>
                 <View style={styles.estimatedTime}>
                     <Text style={styles.lightText}>Estimated Time</Text>
-                    <Text style={styles.text}>10 minutes</Text>
+                    <Text style={styles.text}>{ngo.estimated} minutes</Text>
                 </View>
 
                 <View >
                     <Text style={styles.lightText}> Allowed Time</Text>
-                    <Text style={styles.text}>60 minutes</Text>
+                    <Text style={styles.text}>{ngo.allowed} minutes</Text>
                 </View>         
             </View>
             <View style={styles.previewButtons}>
@@ -60,7 +60,7 @@ const SnippetPreview = (props) => {
 
                 <TouchableOpacity
                     style={styles.viewSnippetButton}
-                    onPress={() => navigation.navigate('View Snippet')}
+                    onPress={() => navigation.navigate('View Snippet', {ngo: ngo})}
                 >
                     <Text style={styles.viewSnippetText}> View Snippet </Text>
                 </TouchableOpacity>

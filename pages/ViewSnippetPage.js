@@ -5,10 +5,10 @@ import { useNavigation } from '@react-navigation/core';
 import { Feather } from '@expo/vector-icons';
 
 
-const ViewSnippetPage = (props) => {
+const ViewSnippetPage = ({ route }) => {
 
-const navigation = useNavigation()
-
+const navigation = useNavigation();
+const { ngo } = route.params;
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
@@ -28,14 +28,14 @@ const navigation = useNavigation()
             <View style={styles.item}>
                 <Text style={styles.ngoName}>Who are we?</Text>
                 <View style={styles.ngoSubtitle}>
-                <Text style={styles.lightText}>Pets in Need is a non-profit animal shelter, we transfer in dogs and cats from public shelters where they are in danger of being euthanized due to space or financial limitations.</Text>
+                <Text style={styles.lightText}>{ngo.who}</Text>
                 </View>
             </View>
 
             <View style={styles.item}>
                 <Text style={styles.ngoName}>What you need to do</Text>
                 <View style={styles.ngoSubtitle}>
-                <Text style={styles.lightText}>Your mission, should you choose to accept is, to read and translate a document from English to Mandarin. Full professional proficiency or native / bilingual proficiency would be required.</Text>
+                <Text style={styles.lightText}>{ngo.what}</Text>
                 </View>
             </View>
 
@@ -52,14 +52,14 @@ const navigation = useNavigation()
                     <View style={styles.threecolumn}>
                         <Text style={styles.lightText}> Time </Text>
                         <View style={styles.ngoSubtitle}>
-                        <Text style={styles.timeBox}> 10 minutes</Text>
+                        <Text style={styles.timeBox}>{ngo.estimated} minutes</Text>
                         </View>
                     </View>
 
                     <View style={styles.threecolumn}>
                         <Text style={styles.lightText}> Allowed Time </Text>
                         <View style={styles.ngoSubtitle}>
-                        <Text style={styles.timeBox}> 60 minutes </Text>
+                        <Text style={styles.timeBox}>{ngo.allowed} minutes </Text>
                         </View>
                     </View>
 
@@ -71,7 +71,7 @@ const navigation = useNavigation()
 
 <TouchableOpacity
     style={styles.startNowButton}
-    onPress={() => navigation.navigate('Start Snippet')}
+    onPress={() => navigation.navigate('Start Snippet', {ngo: ngo})}
 
 
 >
