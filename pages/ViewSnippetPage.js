@@ -6,80 +6,51 @@ import { useNavigation } from '@react-navigation/core'
 
 const ViewSnippetPage = (props) => {
 
-    const navigation = useNavigation()
-
-
+const navigation = useNavigation()
 
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
-        <View style={styles.previewWrapper}>
-               <Image 
+        <View >
+            <Image 
               style={styles.profilePic}
               source={require('../assets/img/pets-in-need.jpeg')}
-              />
+            />
             <View style={styles.item}>
-                <View style={styles.topOfPreview}>
-                    <View style={styles.logoAndHeading}>
-                    <View style={styles.ngoInfo}>
-                        <Text style={styles.ngoName}>Who are we?</Text>
-                        <View style={styles.ngoSubtitle}>
-                        {/* <View style={styles.circularLogo}></View> */}
-                        <Text style={styles.lightText}>Pets in Need is a non-profit animal shelter, we transfer in dogs and cats from public shelters where they are in danger of being euthanized due to space or financial limitations.</Text>
-                        </View>
-                    </View>
-                    </View>
+                <Text style={styles.ngoName}>Who are we?</Text>
+                <View style={styles.ngoSubtitle}>
+                <Text style={styles.lightText}>Pets in Need is a non-profit animal shelter, we transfer in dogs and cats from public shelters where they are in danger of being euthanized due to space or financial limitations.</Text>
                 </View>
-            
-                {/* <View style={styles.timeWrapper}>
-                    <View style={styles.estimatedTime}>
-                        <Text style={styles.lightText}>Estimated Time</Text>
-                        <Text style={styles.text}>10 minutes</Text>
-                    </View>
-
-                    <View style={styles.allowedTime}>
-                        <Text style={styles.lightText}> Allowed Time</Text>
-                        <Text style={styles.text}>60 minutes</Text>
-
-                    </View>     */}     
-                {/* </View> */}
             </View>
 
             <View style={styles.item}>
-                <View style={styles.topOfPreview}>
-                    <View style={styles.logoAndHeading}>
-                    <View style={styles.ngoInfo}>
-                        <Text style={styles.ngoName}>What you need to do</Text>
-                        <View style={styles.ngoSubtitle}>
-                        {/* <View style={styles.circularLogo}></View> */}
-                        <Text style={styles.lightText}>Your mission, should you choose to accept is, to read and translate a document from English to Mandarin. Full professional proficiency or native / bilingual proficiency would be required.</Text>
-                        </View>
-                    </View>
-                    </View>
+                <Text style={styles.ngoName}>What you need to do</Text>
+                <View style={styles.ngoSubtitle}>
+                <Text style={styles.lightText}>Your mission, should you choose to accept is, to read and translate a document from English to Mandarin. Full professional proficiency or native / bilingual proficiency would be required.</Text>
                 </View>
-        </View>
+            </View>
 
-        <View style={styles.item}>
-                <View style={styles.topOfPreview}>
+            <View style={styles.item}>
+                <View >
                     <View style={styles.logoAndHeading3col}>
                     <View style={styles.threecolumn}>
                         <Text style={styles.lightText}> Level </Text>
                         <View style={styles.ngoSubtitle}>
-                        <Text style={styles.ngoName}> 3</Text>
+                        <Text style={styles.timeBox}> 3</Text>
                         </View>
                     </View>
 
                     <View style={styles.threecolumn}>
                         <Text style={styles.lightText}> Time </Text>
                         <View style={styles.ngoSubtitle}>
-                        <Text style={styles.ngoName}> 10 minutes</Text>
+                        <Text style={styles.timeBox}> 10 minutes</Text>
                         </View>
                     </View>
 
                     <View style={styles.threecolumn}>
                         <Text style={styles.lightText}> Allowed Time </Text>
                         <View style={styles.ngoSubtitle}>
-                        <Text style={styles.ngoName}> 60 minutes </Text>
+                        <Text style={styles.timeBox}> 60 minutes </Text>
                         </View>
                     </View>
 
@@ -91,8 +62,8 @@ const ViewSnippetPage = (props) => {
 
 <TouchableOpacity
     style={styles.startNowButton}
-    // onPress={() => navigation.navigate('SnippetStackNavigator', {screen: 'Start Snippet'})}
     onPress={() => navigation.navigate('Translation Snippet')}
+    // onPress={() => navigation.pop()}
 
 >
     <Text style={styles.startNowText}> Start Now</Text>
@@ -115,45 +86,20 @@ export default ViewSnippetPage;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingTop: 20,
+        backgroundColor: '#D3E5E5'
       },
       scrollView: {
-        // backgroundColor: 'pink',
         marginHorizontal: 20,
       },
-    previewWrapper: {
-        paddingVertical: 150,
-        paddingHorizontal: 20,
-    },
-    topOfPreview: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-
-    },
     item:{
         backgroundColor: '#FFF',
-        padding: 9,
+        padding: 20,
         borderRadius: 10,
-        flexDirection: 'column',
-        // alignItems: 'center',
-        // justifyContent: 'space-between',
-        marginBottom: 20, 
+        marginBottom: 15, 
     },
-    ngoLogo:{
-        // flexDirection: 'row',
-        // alignItems: 'center',
-        // flexWrap: 'wrap'
-    },
-    logoAndHeading: {
-        flexDirection: 'row',
-
-    },
-
     logoAndHeading3col: {
         flexDirection: 'row',
-        alignItems: 'center',
-        // maxWidth: '33%',
-
+        justifyContent: 'space-between',
     },
     square: {
         width: 100,
@@ -166,71 +112,41 @@ const styles = StyleSheet.create({
     itemText: {
         maxWidth: '80%',
     }, 
-    circular: {
-        width:12,
-        height: 12,
-        borderColor: '#55BCF6',
-        borderWidth: 2,
-        borderRadius: 5,
-        // justifyContent: 'flex-end',
-    },
-    circularLogo: {
-        width:12,
-        height: 12,
-        borderColor: '#55BCF6',
-        borderWidth: 2,
-        borderRadius: 5,
-        // justifyContent: 'flex-end',
-    },
     text: {
         fontFamily: "Montserrat_400Regular",
         fontSize: 16,
     },
     lightText: {
         fontFamily: "Montserrat_300Light",
-        fontSize: 12,
-    },
-    ngoInfo: {
-
+        fontSize: 14,
     },
     ngoName: {
         fontFamily: "Montserrat_700Bold",
-        paddingBottom: 20,
+        paddingBottom: 10,
         fontSize: 16,
-
-
+    },
+    timeBox: {
+        fontFamily: "Montserrat_700Bold",
+        paddingTop: 5,
+        fontSize: 16,
     },
     timeWrapper:{
         flexDirection: 'row',
         justifyContent: 'flex-start',
-
-
     },
     estimatedTime: {
         paddingRight: 20,
         justifyContent: 'flex-start',
 
     },
-    allowedTime: {
-
-    },
-    previewButtons: {
-        // justifyContent: 'space-between',
-        // flexDirection: 'row',
-
-
-    },
     startNowButton: {
         alignItems: 'center',
-        // justifyContent: 'center',
         flexDirection: 'column',
-
         backgroundColor: '#36B6B6',
         padding: 10,
         marginTop: 16,
         borderRadius: 10,
         paddingHorizontal: 20,
-
     },
     startNowText: {
         fontFamily: "Montserrat_400Regular",
@@ -254,21 +170,18 @@ const styles = StyleSheet.create({
     },
     ngoSubtitle: {
         flexDirection: 'row',
-
     },
-
     threecolumn: {
-        // alignItems: 'center',
-        flexDirection: 'column',
-        paddingHorizontal: 5,
+        paddingHorizontal: 8,
     },
     profilePic: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        width: 50,
-        height:50,
-        borderRadius: 125, //should be half of the width and height to make it circular
-        paddingVertical: 20,
+        alignSelf: 'center',
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+        marginVertical: 20
       }, 
 });

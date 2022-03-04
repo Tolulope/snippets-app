@@ -82,7 +82,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <ScrollView style={{ flex: 1, marginHorizontal: 16, marginTop: 40 }} showsVerticalScrollIndicator={false}>
+    <ScrollView style={{ flex: 1, paddingHorizontal: 16, paddingTop: 40, backgroundColor: '#D3E5E5' }} showsVerticalScrollIndicator={false}>
         <View style={styles.view}>
           <View style={styles.dateContainer}>
           <Feather name="sun" size={16} color='#36B6B6' />
