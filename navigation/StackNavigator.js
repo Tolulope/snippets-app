@@ -35,7 +35,7 @@ const MainStackNavigator = () => {
           headerTitleStyle: { fontWeight: 'bold' },
           headerShown: false,
         }}>
-        <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+        {/* <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} /> */}
         <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ title: 'Tab Navigation' }}/>
       </Stack.Navigator>
   );

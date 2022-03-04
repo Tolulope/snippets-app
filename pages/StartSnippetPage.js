@@ -19,6 +19,38 @@ const StartSnippetPage = ({ navigation }) => {
                 </View>
         </View>
 
+        <View style={styles.item}>
+                <View style={styles.topOfPreview}>
+                    <View style={styles.logoAndHeading3col}>
+                    <View style={styles.threecolumn}>
+                        <Text style={styles.lightText}> Level </Text>
+                        <View style={styles.ngoSubtitle}>
+                        <Text style={styles.ngoName}> 3</Text>
+                        </View>
+                    </View>
+
+                    <View style={styles.threecolumn}>
+                        <Text style={styles.lightText}> Time </Text>
+                        <View style={styles.ngoSubtitle}>
+                        <Text style={styles.ngoName}> 10 minutes</Text>
+                        </View>
+                    </View>
+
+                    <View style={styles.threecolumn}>
+                        <Text style={styles.lightText}> Allowed Time </Text>
+                        <View style={styles.ngoSubtitle}>
+                        <Text style={styles.ngoName}> 60 minutes </Text>
+                        </View>
+                    </View>
+
+                    </View>
+                </View>
+        </View>
+
+
+
+
+
         <View style={styles.previewButtons}>
 
 <TouchableOpacity
@@ -31,12 +63,12 @@ const StartSnippetPage = ({ navigation }) => {
 </TouchableOpacity>
 
 <TouchableOpacity
-    style={styles.startNowButton}
+    style={styles.viewSnippetButton}
     // onPress={() => navigation.navigate('SnippetStackNavigator', {screen: 'Start Snippet'})}
     onPress={() => navigation.navigate('Acceuil')}
 
 >
-    <Text style={styles.startNowText}> Drop the Snippet</Text>
+    <Text style={styles.viewSnippetText}> Drop the Snippet</Text>
 </TouchableOpacity>
 
 </View>
@@ -53,6 +85,7 @@ export default StartSnippetPage;
 const styles = StyleSheet.create({
     previewWrapper: {
         paddingVertical: 150,
+        paddingHorizontal: 20,
     },
     topOfPreview: {
         flexDirection: 'row',
@@ -75,6 +108,13 @@ const styles = StyleSheet.create({
     },
     logoAndHeading: {
         flexDirection: 'row',
+
+    },
+
+    logoAndHeading3col: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        // maxWidth: '33%',
 
     },
     square: {
@@ -138,7 +178,7 @@ const styles = StyleSheet.create({
     },
     previewButtons: {
         justifyContent: 'space-between',
-        flexDirection: 'row',
+        flexDirection: 'column',
 
 
     },
@@ -146,7 +186,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#36B6B6',
         padding: 10,
-        width: 150,
         marginTop: 16,
         borderRadius: 10,
         paddingHorizontal: 20,
@@ -162,7 +201,6 @@ const styles = StyleSheet.create({
         borderColor: '#CDCDCD',
         borderWidth: 2,
         padding: 10,
-        width: 150,
         marginTop: 16,
         borderRadius: 10,
         paddingHorizontal: 20,
@@ -175,5 +213,11 @@ const styles = StyleSheet.create({
     ngoSubtitle: {
         flexDirection: 'row',
 
+    },
+
+    threecolumn: {
+        // alignItems: 'center',
+        flexDirection: 'column',
+        paddingHorizontal: 5,
     },
 });

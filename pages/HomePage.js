@@ -50,12 +50,12 @@ const HomePage = ({ navigation }) => {
                       estimated: documentSnapshot.data().estimatedTime,
                       });
 
-        userinfo.push({
-          document: documentSnapshot.data().document,
-          needtodo: documentSnapshot.data().needtodo,
-          whoarewe: documentSnapshot.data().whoarewe,
-          level: documentSnapshot.data().level,
-          });
+        // userinfo.push({
+        //   document: documentSnapshot.data().document,
+        //   needtodo: documentSnapshot.data().needtodo,
+        //   whoarewe: documentSnapshot.data().whoarewe,
+        //   level: documentSnapshot.data().level,
+        //   });
 
 
       });

@@ -8,6 +8,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons } from '@expo/vector-icons';
 
+import { MainStackNavigator } from './navigation/StackNavigator';  
+
 import AppLoading from 'expo-app-loading';
 import { useFonts } from '@expo-google-fonts/montserrat';
 import {  Montserrat_100Thin,
