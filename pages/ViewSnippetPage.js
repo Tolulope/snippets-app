@@ -92,7 +92,7 @@ const ViewSnippetPage = (props) => {
 <TouchableOpacity
     style={styles.startNowButton}
     // onPress={() => navigation.navigate('SnippetStackNavigator', {screen: 'Start Snippet'})}
-    onPress={() => navigation.navigate('Translation Snippet')}
+    onPress={() => navigation.navigate('Start Snippet')}
 
 >
     <Text style={styles.startNowText}> Start Now</Text>
