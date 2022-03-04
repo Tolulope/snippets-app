@@ -1,7 +1,8 @@
 
 import * as React from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, Image, ScrollView} from 'react-native';
-import { useNavigation } from '@react-navigation/core'
+import { useNavigation } from '@react-navigation/core';
+import { Feather } from '@expo/vector-icons';
 
 
 const ViewSnippetPage = (props) => {
@@ -12,6 +13,14 @@ const navigation = useNavigation()
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
         <View >
+            <View style={styles.icon} >
+                <TouchableOpacity onPress={() => navigation.pop()}>
+                <Feather name="chevron-left" size={32} color="#2D3142" />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                <Feather name="heart" size={32} color="#2D3142" />
+                </TouchableOpacity>
+            </View>
             <Image 
               style={styles.profilePic}
               source={require('../assets/img/pets-in-need.jpeg')}
@@ -62,8 +71,6 @@ const navigation = useNavigation()
 
 <TouchableOpacity
     style={styles.startNowButton}
-
-    // onPress={() => navigation.pop()}
     onPress={() => navigation.navigate('Start Snippet')}
 
 
@@ -93,6 +100,11 @@ const styles = StyleSheet.create({
       scrollView: {
         marginHorizontal: 20,
       },
+    icon: {
+        marginTop: 20,
+        justifyContent: 'space-between',
+        flexDirection: 'row'
+    },
     item:{
         backgroundColor: '#FFF',
         padding: 20,
@@ -184,6 +196,7 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 50,
-        marginVertical: 20
+        marginBottom: 20,
+        marginTop: -20,
       }, 
 });
