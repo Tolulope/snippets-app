@@ -40,7 +40,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
             <Text style={styles.modalText}>You just completed a task for</Text>
             <Image 
               // style={styles.profilePic}
-              source={require('../assets/img/pets-in-need.jpeg')}
+              source={ngo.url}
               />
             <Text style={styles.modalText}>{ngo.name}</Text>
             <View style={styles.levels}>
@@ -70,7 +70,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
             </View>
             <Image 
               style={styles.profilePic}
-              source={require('../assets/img/pets-in-need.jpeg')}
+              source={ngo.url}
               />
 
               <View style={{marginBottom: 16}}>

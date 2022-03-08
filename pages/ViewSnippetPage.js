@@ -9,7 +9,7 @@ const ViewSnippetPage = ({ route }) => {
 
 const navigation = useNavigation();
 const { ngo } = route.params;
-
+ console.log(ngo.url);
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
@@ -24,7 +24,7 @@ const { ngo } = route.params;
             </View>
             <Image 
               style={styles.profilePic}
-              source={require('../assets/img/pets-in-need.jpeg')}
+              source={ngo.url}
             />
             <View style={styles.item}>
                 <Text style={styles.ngoName}>Who are we?</Text>
@@ -72,7 +72,7 @@ const { ngo } = route.params;
 
 <TouchableOpacity
     style={styles.startNowButton}
-    onPress={() => navigation.navigate('Start Snippet', {ngo: ngo})}
+    onPress={() => navigation.navigate('Translation Snippet', {ngo: ngo})}
 
 
 >

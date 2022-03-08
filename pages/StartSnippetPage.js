@@ -93,7 +93,7 @@ const StartSnippetPage = ({ navigation, route }) => {
             </View>
            <Image 
               style={styles.profilePic}
-              source={require('../assets/img/pets-in-need.jpeg')}
+              source={ngo.url}
               />
               <View style={{marginBottom: 16}}>
                 <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 5}}>

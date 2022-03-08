@@ -23,7 +23,7 @@ const SnippetPreview = (props) => {
         <TouchableOpacity style={styles.item}>
             <View style={styles.topOfPreview}>
                 <View style={styles.logoAndHeading}>
-                    <TouchableOpacity style={styles.square}></TouchableOpacity>
+                    <Image style={styles.square} source={ngo.url}/>
                     <View style={styles.ngoInfo}>
                         <Text style={styles.ngoName}>{ngo.name}</Text>
                         <View style={styles.ngoSubtitle}>
@@ -53,7 +53,7 @@ const SnippetPreview = (props) => {
 
                 <TouchableOpacity
                     style={styles.startNowButton}
-                    onPress={() => navigation.navigate('Translation Snippet')}
+                    onPress={() => navigation.navigate('Translation Snippet', {ngo: ngo})}
                 >
                     <Text style={styles.startNowText}> Start Now</Text>
                 </TouchableOpacity>
@@ -90,9 +90,9 @@ const styles = StyleSheet.create({
     square: {
         width: 100,
         height: 100,
-        backgroundColor: '#55bcf6',
-        opacity: 0.4,
-        borderRadius: 5,
+        //backgroundColor: '#55bcf6',
+        //opacity: 0.4,
+        borderRadius: 50,
     },
     itemText: {
         maxWidth: '80%',
