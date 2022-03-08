@@ -11,14 +11,17 @@ const TranslationSnippetPage = ({ navigation, route }) => {
   const [translation, setTranslation] = useState('')
   const [modalVisible, setModalVisible] = useState(false);
   const { ngo } = route.params;
-  const { state, addToCompleted } = useContext(Context);
+  const { state, addToCompleted, addToInProgress, removeFromInProgress } = useContext(Context);
 
 
   const goToHome = () => {
     setModalVisible(!modalVisible);
     navigation.navigate('Acceuil');
-
   }
+
+  useEffect(() => {
+    addToInProgress({ snippet: ngo });
+  }, []);
 
 
 
@@ -56,6 +59,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
                 addToCompleted({ snippet: ngo });
+                removeFromInProgress({ snippet: ngo });
                 goToHome();
               }
               }

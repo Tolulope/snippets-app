@@ -11,10 +11,21 @@ const reducer = (state, action) => {
         let newRemoveLiked = state.liked;
         newRemoveLiked = newRemoveLiked.filter(snippet => snippet !== action.payload);
         return { ...state, liked: newRemoveLiked };
+    case "addToInProgress":
+        if (state.inProgress.includes(action.payload)) return state;
+        let newInProgress = state.inProgress;
+        newInProgress.push(action.payload);
+        return { ...state, inProgress: newInProgress };
+    case "removeFromInProgress":
+        let newRemoveInProgress = state.inProgress;
+        newRemoveInProgress = newRemoveInProgress.filter(snippet => snippet !== action.payload);
+        return { ...state, inProgress: newRemoveInProgress };
     case "addToCompleted":
         if (state.completed.includes(action.payload)) return state;
         let newCompleted = state.completed;
         newCompleted.push(action.payload);
+        console.log("New completed");
+        console.log(newCompleted);
         return { ...state, completed: newCompleted }; 
     default:
       return state;
@@ -25,17 +36,27 @@ const addToLiked = (dispatch) =>  ({ snippet }) => {
     dispatch({ type: "addToLiked", payload: snippet });
 };
 
+const addToInProgress = (dispatch) =>  ({ snippet }) => {
+    dispatch({ type: "addToInProgress", payload: snippet });
+};
+
+const removeFromInProgress = (dispatch) =>  ({ snippet }) => {
+    dispatch({ type: "removeFromInProgress", payload: snippet });
+};
+
 const removeFromLiked = (dispatch) =>  ({ snippet }) => {
     dispatch({ type: "removeFromLiked", payload: snippet });
 };
 
 const addToCompleted = (dispatch) =>  ({ snippet }) => {
+    console.log("Added to completed");
+    console.log(snippet);
     dispatch({ type: "addToCompleted", payload: snippet });
 };
 
 export const { Provider, Context } = createDataContext(
   reducer,
-  { addToLiked, removeFromLiked },
+  { addToLiked, removeFromLiked, addToCompleted, addToInProgress, removeFromInProgress },
   { 
     data: [
         {
