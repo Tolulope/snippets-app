@@ -3,6 +3,9 @@ import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView } from 'react-na
 import { SearchBar } from 'react-native-elements';
 import SnippetPreview from '../components/SnippetPreview';
 import { LogBox } from 'react-native';
+// When we decide we are good to go, we can ignore all notifications by uncommenting these two lines
+// LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+// LogBox.ignoreAllLogs();//Ignore all log notifications
 import { Context } from '../context/UserContext';
 import { Feather } from '@expo/vector-icons'; 
 
@@ -73,6 +76,8 @@ const HomePage = ({ navigation }) => {
 useEffect(() => {
   getUser();
 }, []);
+
+  console.log(state);
   return (
     <ScrollView style={{ flex: 1, paddingHorizontal: 16, paddingTop: 40, backgroundColor: '#D3E5E5' }} showsVerticalScrollIndicator={false}>
         <View style={styles.view}>
@@ -104,13 +109,6 @@ useEffect(() => {
           </View>
 
         <ScrollView showsVerticalScrollIndicator={false}>
-        {/* {
-        userData.map((item, index) => {
-              return ( 
-                <SnippetPreview key={index} ngoName={item.name}  />
-              )
-            })
-        } */}
         {
         fake_data.map((item, index) => {
               return ( 

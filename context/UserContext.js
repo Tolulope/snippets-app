@@ -2,14 +2,31 @@ import createDataContext from "./createDataContext";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "addToLiked":
+        if (state.liked.includes(action.payload)) return state;
+        let newLiked = state.liked;
+        newLiked.push(action.payload);
+        return { ...state, liked: newLiked };
+    case "removeFromLiked":
+        let newRemoveLiked = state.liked;
+        newRemoveLiked = newRemoveLiked.filter(snippet => snippet !== action.payload);
+        return { ...state, liked: newRemoveLiked }; 
     default:
       return state;
   }
 };
 
+const addToLiked = (dispatch) =>  ({ snippet }) => {
+    dispatch({ type: "addToLiked", payload: snippet });
+};
+
+const removeFromLiked = (dispatch) =>  ({ snippet }) => {
+    dispatch({ type: "removeFromLiked", payload: snippet });
+};
+
 export const { Provider, Context } = createDataContext(
   reducer,
-  {  },
+  { addToLiked, removeFromLiked },
   { 
     data: [
         {

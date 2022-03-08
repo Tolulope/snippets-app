@@ -1,11 +1,9 @@
 import { useNavigation } from '@react-navigation/core'
 
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../context/UserContext';
 import { View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-// import { Icon } from 'react-native-elements/dist/icons/Icon';
-
-import * as Icon from "react-native-feather";
-
+import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 
 const SnippetPreview = (props) => {
@@ -16,6 +14,7 @@ const SnippetPreview = (props) => {
     //     navigation.navigate('View Snippet')
     // }
     const ngo = props.ngo;
+    const { state, addToLiked, removeFromLiked } = useContext(Context);
 
     //console.log(ngo.name);
 
@@ -36,7 +35,12 @@ const SnippetPreview = (props) => {
                         </View>
                     </View>
                 </View>
-                <TouchableOpacity><Feather name="heart" size={24} color="#CDCDCD" /></TouchableOpacity>
+                {
+                    state.liked.includes(ngo) ?
+                    <TouchableOpacity onPress={() => removeFromLiked({snippet: ngo})}><AntDesign name="heart" size={24} color="#36B6B6" /></TouchableOpacity>
+                    :
+                    <TouchableOpacity onPress={() => addToLiked({snippet: ngo})}><AntDesign name="hearto" size={24} color="#CDCDCD" /></TouchableOpacity>
+                }
             </View>
             <View style={styles.timeWrapper}>
                 <View style={styles.estimatedTime}>
