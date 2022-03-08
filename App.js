@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { MainStackNavigator } from './navigation/StackNavigator';  
 
 import AppLoading from 'expo-app-loading';
+import { Provider } from './context/UserContext';
 import { useFonts } from '@expo-google-fonts/montserrat';
 import {  Montserrat_100Thin,
   Montserrat_100Thin_Italic,
@@ -60,4 +61,12 @@ if (!fontsLoaded) {
 }
 }
 
-export default App;
+//export default App;
+
+export default () => {
+  return (
+    <Provider>
+      <App/>
+    </Provider>
+  );
+};
