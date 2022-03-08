@@ -16,7 +16,6 @@ const CompletedPage = ({ navigation }) => {
         listener.remove();
     };
 }, []);
-  console.log(state);
   return (
     <ScrollView style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 20, backgroundColor: '#D3E5E5' }} showsVerticalScrollIndicator={false}>
       { state.completed.length > 0 ? 
