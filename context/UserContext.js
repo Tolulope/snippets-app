@@ -10,7 +10,12 @@ const reducer = (state, action) => {
     case "removeFromLiked":
         let newRemoveLiked = state.liked;
         newRemoveLiked = newRemoveLiked.filter(snippet => snippet !== action.payload);
-        return { ...state, liked: newRemoveLiked }; 
+        return { ...state, liked: newRemoveLiked };
+    case "addToCompleted":
+        if (state.completed.includes(action.payload)) return state;
+        let newCompleted = state.completed;
+        newCompleted.push(action.payload);
+        return { ...state, completed: newCompleted }; 
     default:
       return state;
   }
@@ -22,6 +27,10 @@ const addToLiked = (dispatch) =>  ({ snippet }) => {
 
 const removeFromLiked = (dispatch) =>  ({ snippet }) => {
     dispatch({ type: "removeFromLiked", payload: snippet });
+};
+
+const addToCompleted = (dispatch) =>  ({ snippet }) => {
+    dispatch({ type: "addToCompleted", payload: snippet });
 };
 
 export const { Provider, Context } = createDataContext(

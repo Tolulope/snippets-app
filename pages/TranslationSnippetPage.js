@@ -1,9 +1,9 @@
 
-import * as React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, TextInput, Modal, Pressable, Image, ScrollView} from 'react-native';
-import { useEffect, useState } from 'react'
 import * as Progress from 'react-native-progress';
 import { Feather } from '@expo/vector-icons';
+import { Context } from '../context/UserContext';
 
 
 const TranslationSnippetPage = ({ navigation, route }) => {
@@ -11,6 +11,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
   const [translation, setTranslation] = useState('')
   const [modalVisible, setModalVisible] = useState(false);
   const { ngo } = route.params;
+  const { state, addToCompleted } = useContext(Context);
 
 
   const goToHome = () => {
@@ -53,7 +54,11 @@ const TranslationSnippetPage = ({ navigation, route }) => {
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={goToHome}
+              onPress={() => {
+                addToCompleted({ snippet: ngo });
+                goToHome();
+              }
+              }
             >
               <Text style={styles.textStyle}>Back to Home</Text>
             </Pressable>
