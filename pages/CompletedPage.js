@@ -2,27 +2,18 @@
 import React, {useContext, useEffect} from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, ScrollView } from 'react-native';
 import { Context } from '../context/UserContext';
-import SnippetPreview from '../components/SnippetPreview';
+import SnippetCompleted from '../components/SnippetCompleted';
 import { AntDesign } from '@expo/vector-icons';
 
 const CompletedPage = ({ navigation }) => {
   const { state } = useContext(Context);
   
-//   useEffect(() => {
-//     const listener = navigation.addListener('didFocus', () => {
-//       const { state } = useContext(Context);
-//     });
-
-//     return () => {
-//         listener.remove();
-//     };
-// }, []);
   return (
     <ScrollView style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 20, backgroundColor: '#D3E5E5' }} showsVerticalScrollIndicator={false}>
       { state.completed.length > 0 ? 
       state.completed.map((item, index) => {
             return ( 
-              <SnippetPreview key={index} ngo={item}  />
+              <SnippetCompleted key={index} ngo={item}  />
             )
           })
       : 

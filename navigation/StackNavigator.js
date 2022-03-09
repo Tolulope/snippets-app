@@ -9,6 +9,7 @@ import LoginScreen from '../pages/LoginScreen';
 import ViewSnippet from '../pages/ViewSnippetPage';
 import StartSnippet from '../pages/StartSnippetPage';
 import TranslationSnippet from '../pages/TranslationSnippetPage';
+import ReviewPage from "../pages/ReviewPage";
 
 import HomePage from "../pages/HomePage";
 
@@ -55,6 +56,7 @@ const SnippetStackNavigator = ( {navigation} ) => {
         <Stack.Screen options={{ headerShown: false }} name="View Snippet" component={ViewSnippet} />
         <Stack.Screen options={{ headerShown: false }} name="Start Snippet" component={StartSnippet} />
         <Stack.Screen options={{ headerShown: false }} name="Translation Snippet" component={TranslationSnippet} />
+        <Stack.Screen options={{ headerShown: false }} name="Review Page" component={ReviewPage} />
         {/* <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ title: 'Tab Navigation' }}/> */}
       </Stack.Navigator>
   );
