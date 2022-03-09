@@ -10,6 +10,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
 
   const [translation, setTranslation] = useState('')
   const [modalVisible, setModalVisible] = useState(false);
+  const [discardModalVisible, setDiscardModalVisible] = useState(false);
   const { ngo } = route.params;
   const { state, addToCompleted, addToInProgress, removeFromInProgress } = useContext(Context);
 
@@ -43,7 +44,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
             <Text style={styles.modalText}>CONGRATULATIONS!</Text>
             <Text style={styles.modalText}>You just completed a task for</Text>
             <Image 
-              // style={styles.profilePic}
+              style={styles.modalImage}
               source={ngo.url}
               />
             <Text style={styles.modalText}>{ngo.name}</Text>
@@ -67,6 +68,37 @@ const TranslationSnippetPage = ({ navigation, route }) => {
               <Text style={styles.textStyle}>Back to Home</Text>
             </Pressable>
           </View>
+        </View>
+      </Modal>
+      <Modal
+            animationType="slide"
+            transparent={true}
+            visible={discardModalVisible}
+            onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!discardModalVisible);
+            }}
+        >
+        <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+                <Text style={styles.modalText}>Are you sure you want to drop this Snippet?</Text>
+                <Image 
+                    style={styles.modalImage}
+                    source={ngo.url}
+                />
+                <View style={{flexDirection: 'row'}}>
+                    <TouchableOpacity style={styles.viewSnippetButton} onPress={() => setDiscardModalVisible(!discardModalVisible)}>
+                        <Text style={styles.viewSnippetText}>Close</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.startNowButton} onPress={() => {
+                        setDiscardModalVisible(!discardModalVisible);
+                        removeFromInProgress({snippet: ngo});
+                        goToHome();
+                    }}>
+                        <Text style={styles.startNowText}>Drop Snippet</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </View>
       </Modal>
             <View style={styles.icon} >
@@ -119,7 +151,9 @@ const TranslationSnippetPage = ({ navigation, route }) => {
                 </View>
             </View>
     <View style={styles.previewButtons}>
-
+    <TouchableOpacity style={styles.viewSnippetButton} onPress={() => setDiscardModalVisible(true)}>
+    <Text style={styles.viewSnippetText}>Drop Snippet</Text>
+    </TouchableOpacity>
     <TouchableOpacity style={styles.startNowButton} onPress={() => setModalVisible(true)}>
     <Text style={styles.startNowText}> Submit</Text>
     </TouchableOpacity>
@@ -157,7 +191,8 @@ centeredView: {
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
-    padding: 35,
+    paddingHorizontal: 20,
+    paddingVertical: 35,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
@@ -184,8 +219,9 @@ centeredView: {
     textAlign: "center"
   },
   modalText: {
-    marginBottom: 15,
-    fontFamily: "Montserrat_400Regular",
+    marginBottom: 35,
+    fontSize: 20,
+    fontFamily: "Montserrat_500Medium",
     textAlign: "center"
   },
   container: {
@@ -250,12 +286,14 @@ estimatedTime: {
 },
 startNowButton: {
     alignItems: 'center',
-    flexDirection: 'column',
     backgroundColor: '#36B6B6',
     padding: 10,
-    marginTop: 16,
+    marginHorizontal: 10,
     borderRadius: 10,
     paddingHorizontal: 20,
+    marginVertical: 10,
+    marginHorizontal: 5,
+    flex: 1
 },
 startNowText: {
     fontFamily: "Montserrat_400Regular",
@@ -267,11 +305,11 @@ viewSnippetButton: {
     borderColor: '#CDCDCD',
     borderWidth: 2,
     padding: 10,
-    marginTop: 10,
+    marginVertical: 10,
     borderRadius: 10,
+    marginHorizontal: 5,
     paddingHorizontal: 20,
-
-
+    flex: 1
 },
 viewSnippetText: {
     fontFamily: "Montserrat_400Regular",
@@ -293,6 +331,10 @@ profilePic: {
     borderRadius: 50,
     marginBottom: 20,
     marginTop: -20,
+  }, 
+  modalImage: {
+    width: 200,
+    height: 200,
   }, 
 });
 

@@ -1,25 +1,57 @@
 import { useNavigation } from '@react-navigation/core'
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../context/UserContext';
-import { View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Modal, Pressable} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
+import * as Progress from 'react-native-progress';
 
-const SnippetPreview = (props) => {
+const SnippetInProgress = (props) => {
 
     const navigation = useNavigation()
 
-    // const viewSnippet = () => {
-    //     navigation.navigate('View Snippet')
-    // }
     const ngo = props.ngo;
-    const { state, addToLiked, removeFromLiked } = useContext(Context);
-
-    //console.log(ngo.name);
-
+    const { state, addToLiked, removeFromLiked, removeFromInProgress } = useContext(Context);
+    const [modalVisible, setModalVisible] = useState(false);
+    const goToHome = () => {
+        setModalVisible(!modalVisible);
+        navigation.navigate('Acceuil');
+      }
     return ( 
         <View style={styles.item}>
+        <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!modalVisible);
+            }}
+        >
+        <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+                <Text style={styles.modalText}>Are you sure you want to drop this Snippet?</Text>
+                <Image 
+                    style={styles.modalImage}
+                    source={ngo.url}
+                />
+                <View style={styles.previewButtons}>
+                    <TouchableOpacity style={styles.viewSnippetButton} onPress={() => setModalVisible(!modalVisible)}>
+                        <Text style={styles.viewSnippetText}>Close</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.startNowButton} onPress={() => {
+                        setModalVisible(!modalVisible);
+                        removeFromInProgress({snippet: ngo});
+                    }}>
+                        <Text style={styles.startNowText}>Drop Snippet</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </View>
+      </Modal>
+
+
             <View style={styles.topOfPreview}>
                 <View style={styles.logoAndHeading}>
                     <Image style={styles.square} source={ngo.url}/>
@@ -49,7 +81,7 @@ const SnippetPreview = (props) => {
                 </View>
 
                 <View >
-                    <Text style={styles.lightText}> Allowed Time</Text>
+                    <Text style={styles.lightText}> Remaining Time</Text>
                     <Text style={styles.text}>{ngo.allowed} minutes</Text>
                 </View>         
             </View>
@@ -59,14 +91,16 @@ const SnippetPreview = (props) => {
                     style={styles.startNowButton}
                     onPress={() => navigation.navigate('Translation Snippet', {ngo: ngo})}
                 >
-                    <Text style={styles.startNowText}> Start Now</Text>
+                    <Text style={styles.startNowText}>Resume</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.viewSnippetButton}
-                    onPress={() => navigation.navigate('View Snippet', {ngo: ngo})}
+                    onPress={() => {
+                        setModalVisible(!modalVisible);
+                    }}
                 >
-                    <Text style={styles.viewSnippetText}> View Snippet </Text>
+                    <Text style={styles.viewSnippetText}>Drop Snippet</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -172,6 +206,7 @@ const styles = StyleSheet.create({
         marginTop: 16,
         borderRadius: 10,
         paddingHorizontal: 20,
+        marginHorizontal: 10
 
     },
     viewSnippetText: {
@@ -183,6 +218,38 @@ const styles = StyleSheet.create({
         marginBottom: 4
 
     },
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        paddingHorizontal: 20,
+        paddingVertical: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    modalImage: {
+        width: 200,
+        height: 200,
+    },
+    modalText: {
+        marginBottom: 35,
+        fontSize: 20,
+        fontFamily: "Montserrat_500Medium",
+        textAlign: "center"
+      }, 
 });
  
-export default SnippetPreview;
+export default SnippetInProgress;

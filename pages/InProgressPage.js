@@ -2,7 +2,8 @@
 import React, {useContext} from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, ScrollView } from 'react-native';
 import { Context } from '../context/UserContext';
-import SnippetPreview from '../components/SnippetPreview';
+import SnippetInProgress from '../components/SnippetInProgress';
+import { AntDesign } from '@expo/vector-icons';
 
 const InProgressPage = ({ navigation }) => {
   const { state } = useContext(Context)
@@ -11,12 +12,13 @@ const InProgressPage = ({ navigation }) => {
       { state.inProgress.length > 0 ? 
       state.inProgress.map((item, index) => {
             return ( 
-              <SnippetPreview key={index} ngo={item}  />
+              <SnippetInProgress key={index} ngo={item}  />
             )
           })
       : 
-      <View>
-        <Text>You have no snippets in progress</Text>
+      <View style={{alignItems: 'center'}}>
+        <AntDesign name="barschart" size={80} color="#7c7c7c" style={{marginVertical: 40}}/>
+        <Text style={{ fontSize: 24, color: '#7c7c7c' }}>You have no in-progress snippets</Text>
       </View>
       }
     </ScrollView>

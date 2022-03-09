@@ -24,8 +24,6 @@ const reducer = (state, action) => {
         if (state.completed.includes(action.payload)) return state;
         let newCompleted = state.completed;
         newCompleted.push(action.payload);
-        console.log("New completed");
-        console.log(newCompleted);
         return { ...state, completed: newCompleted }; 
     default:
       return state;
@@ -49,8 +47,6 @@ const removeFromLiked = (dispatch) =>  ({ snippet }) => {
 };
 
 const addToCompleted = (dispatch) =>  ({ snippet }) => {
-    console.log("Added to completed");
-    console.log(snippet);
     dispatch({ type: "addToCompleted", payload: snippet });
 };
 

@@ -76,7 +76,6 @@ const HomePage = ({ navigation }) => {
 useEffect(() => {
   getUser();
 }, []);
-  //console.log(state);
   return (
     <ScrollView style={{ flex: 1, paddingHorizontal: 16, paddingTop: 40, backgroundColor: '#D3E5E5' }} showsVerticalScrollIndicator={false}>
         <View style={styles.view}>
