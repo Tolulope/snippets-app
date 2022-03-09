@@ -29,7 +29,7 @@ const HomePage = ({ navigation }) => {
   const { state } = useContext(Context);
   // const db = app.firestore();
 
-  const fake_data = state.data;
+  // const fake_data = state.data;
 
   
   const getUser = () => {
@@ -108,7 +108,7 @@ useEffect(() => {
 
         <ScrollView showsVerticalScrollIndicator={false}>
         {
-        fake_data.map((item, index) => {
+        state.data.map((item, index) => {
               return ( 
                 <SnippetPreview key={index} ngo={item}  />
               )
