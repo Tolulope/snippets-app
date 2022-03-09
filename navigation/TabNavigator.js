@@ -10,6 +10,9 @@ import CompletedPage from '../pages/CompletedPage';
 import LikedPage from '../pages/LikedPage';
 import InProgressPage from '../pages/InProgressPage';
 
+import SkillsPage from '../pages/SkillsPage';
+import DomainsPage from '../pages/DomainsPage';
+
 import * as Icon from "react-native-feather";
 
 import { SnippetStackNavigator } from './StackNavigator';
@@ -34,6 +37,25 @@ const TopTabs = () => {
       <TopTab.Screen name="InProgress" component={InProgressPage} />
       <TopTab.Screen name="Liked" component={LikedPage} />
       <TopTab.Screen name="Completed" component={CompletedPage} />
+    </TopTab.Navigator>
+  );
+}
+
+const FilterTabs = () => {
+  return (
+    <TopTab.Navigator 
+      screenOptions={{
+        tabBarActiveTintColor: '#36B6B6',
+        tabBarInactiveTintColor: '#2D3142',
+        tabBarLabelStyle: { fontSize: 14 },
+        tabBarIndicatorStyle: { backgroundColor: '#36B6B6' },
+        tabBarStyle: { backgroundColor: 'transparent' },
+      }}
+      style={{ marginTop: 40}}
+      title='Filter'
+    >
+      <TopTab.Screen name="Skills" component={SkillsPage} />
+      <TopTab.Screen name="Domains" component={DomainsPage} />
     </TopTab.Navigator>
   );
 }
@@ -71,7 +93,7 @@ const BottomTabNavigator = () => {
         }} />
       <Tab.Screen
         name="Profil"
-        component={ProfilePage}
+        component={FilterTabs}
         options={{
           tabBarLabel: 'Profile',
           headerShown: false,
@@ -84,4 +106,4 @@ const BottomTabNavigator = () => {
 }
 
 
-export { BottomTabNavigator, TopTabs }
+export { BottomTabNavigator, TopTabs, FilterTabs }
