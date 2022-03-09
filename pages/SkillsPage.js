@@ -6,9 +6,13 @@ import { useEffect, useState } from 'react';
 
 
 import { Feather } from '@expo/vector-icons'; 
+import { Shuffle } from 'react-native-feather';
 
 
 const SkillsPage = ({ navigation }) => {
+
+  const { state } = useContext(Context);
+
 
     const [graphicDesignSelected, setGraphicDesign] = useState(false);
     const [programmingSelected, setProgramming] = useState(false);
@@ -18,7 +22,19 @@ const SkillsPage = ({ navigation }) => {
 
     const [modalVisible, setModalVisible] = useState(false);
 
+    const [englishSelected, setEnglish] = useState(false);
+    const [frenchSelected, setFrench] = useState(false);
+    const [spanishSelected, setSpanish] = useState(false);
+    const [mandarinSelected, setMandarin] = useState(false);
+    const [koreanSelected, setKorean] = useState(false);
+    const [italianSelected, setItalian] = useState(false);
+    const [russianSelected, setRussian] = useState(false);
+    const [signSelected, setSign] = useState(false);
+    const [germanSelected, setGerman] = useState(false);
+
+
     const goToHome = () => {
+      state.data .map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
       setModalVisible(!modalVisible);
       navigation.navigate('Acceuil');
     }
@@ -44,18 +60,117 @@ const SkillsPage = ({ navigation }) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Because you chose "Language Translation"</Text>
             <Text style={styles.modalText}>Select your languages</Text>
-    
-            <Pressable
-            onPress={() => setPhotography(!photographySelected)}
-            style={({ pressed }) => [{ backgroundColor: photographySelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
-            >
-            <View style={styles.item}>
-                <View style={styles.itemLeft}>
-                <Text style={styles.listText}>English</Text>
-                </View>
+            <View style={styles.langRow}>
+              <Pressable
+              onPress={() => setEnglish(!englishSelected)}
+              style={({ pressed }) => [{ backgroundColor: englishSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>English</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
+
+              <Pressable
+              onPress={() => setSpanish(!spanishSelected)}
+              style={({ pressed }) => [{ backgroundColor: spanishSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>Spanish</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
+
+
+              <Pressable
+              onPress={() => setFrench(!frenchSelected)}
+              style={({ pressed }) => [{ backgroundColor: frenchSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>French</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
             </View>
-       </Pressable>
-       
+
+
+            <View style={styles.langRow}>
+              <Pressable
+              onPress={() => setMandarin(!mandarinSelected)}
+              style={({ pressed }) => [{ backgroundColor: mandarinSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>Mandarin</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
+
+              <Pressable
+              onPress={() => setKorean(!koreanSelected)}
+              style={({ pressed }) => [{ backgroundColor: koreanSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>Korean</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
+
+
+              <Pressable
+              onPress={() => setItalian(!italianSelected)}
+              style={({ pressed }) => [{ backgroundColor: italianSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>Italian</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
+            </View>
+
+
+
+            <View style={styles.langRow}>
+              <Pressable
+              onPress={() => setRussian(!russianSelected)}
+              style={({ pressed }) => [{ backgroundColor: russianSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>Russian</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
+
+              <Pressable
+              onPress={() => setSign(!signSelected)}
+              style={({ pressed }) => [{ backgroundColor: signSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>Sign</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
+
+
+              <Pressable
+              onPress={() => setGerman(!germanSelected)}
+              style={({ pressed }) => [{ backgroundColor: germanSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
+              >
+              <View style={styles.langBox}>
+                  {/* <View style={styles.itemLeft}> */}
+                  <Text style={styles.listText}>German</Text>
+                  {/* </View> */}
+              </View>
+              </Pressable>
+            </View>
+
         <View>
             <Pressable
               style={[styles.button, styles.buttonClose]}
@@ -68,9 +183,9 @@ const SkillsPage = ({ navigation }) => {
 
             <Pressable
               style={[styles.button, styles.buttonClose]}
-              onPress={() => {
-                setModalVisible(!modalVisible);              
-            }}
+              onPress={
+              goToHome        
+            }
             >
               <Text style={styles.textStyle}>Done</Text>
             </Pressable>
@@ -254,7 +369,22 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
       },
-        
+      langRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
+      langBox: {
+        alignItems: 'center',
+        borderRadius: 10,
+        borderColor: '#808080',
+        // backgroundColor: '#808080',
+        justifyContent: 'center',
+        width: 100,
+        height: 100,
+        overflow: 'hidden',
+        borderWidth: 2,
+        margin: 2,
+      },
 
 
 });
