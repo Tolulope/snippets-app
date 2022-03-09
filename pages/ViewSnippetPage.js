@@ -1,15 +1,19 @@
 
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, Image, ScrollView} from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { Context } from '../context/UserContext';
+
 
 
 const ViewSnippetPage = ({ route }) => {
 
 const navigation = useNavigation();
 const { ngo } = route.params;
- console.log(ngo.url);
+const { state, addToLiked, removeFromLiked } = useContext(Context);
+
   return (
     <SafeAreaView style={styles.container}>
     <ScrollView style={styles.scrollView}>
@@ -18,9 +22,12 @@ const { ngo } = route.params;
                 <TouchableOpacity onPress={() => navigation.pop()}>
                 <Feather name="chevron-left" size={32} color="#2D3142" />
                 </TouchableOpacity>
-                <TouchableOpacity>
-                <Feather name="heart" size={32} color="#2D3142" />
-                </TouchableOpacity>
+                {
+                    state.liked.includes(ngo) ?
+                    <TouchableOpacity onPress={() => removeFromLiked({snippet: ngo})}><AntDesign name="heart" size={32} color="#36B6B6" /></TouchableOpacity>
+                    :
+                    <TouchableOpacity onPress={() => addToLiked({snippet: ngo})}><AntDesign name="hearto" size={32} color="#2D3142" /></TouchableOpacity>
+                }
             </View>
             <Image 
               style={styles.profilePic}

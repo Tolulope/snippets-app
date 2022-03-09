@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, TextInput, Modal, Pressable, Image, ScrollView} from 'react-native';
 import * as Progress from 'react-native-progress';
 import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { Context } from '../context/UserContext';
 
 
@@ -12,7 +13,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [discardModalVisible, setDiscardModalVisible] = useState(false);
   const { ngo } = route.params;
-  const { state, addToCompleted, addToInProgress, removeFromInProgress } = useContext(Context);
+  const { state, addToCompleted, addToInProgress, removeFromInProgress, addToLiked, removeFromLiked } = useContext(Context);
 
 
   const goToHome = () => {
@@ -105,9 +106,12 @@ const TranslationSnippetPage = ({ navigation, route }) => {
                 <TouchableOpacity onPress={() => navigation.pop()}>
                 <Feather name="chevron-left" size={32} color="#2D3142" />
                 </TouchableOpacity>
-                <TouchableOpacity>
-                <Feather name="heart" size={32} color="#2D3142" />
-                </TouchableOpacity>
+                {
+                    state.liked.includes(ngo) ?
+                    <TouchableOpacity onPress={() => removeFromLiked({snippet: ngo})}><AntDesign name="heart" size={32} color="#36B6B6" /></TouchableOpacity>
+                    :
+                    <TouchableOpacity onPress={() => addToLiked({snippet: ngo})}><AntDesign name="hearto" size={32} color="#2D3142" /></TouchableOpacity>
+                }
             </View>
             <Image 
               style={styles.profilePic}
