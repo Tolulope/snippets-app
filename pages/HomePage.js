@@ -85,7 +85,7 @@ useEffect(() => {
             Friday 11 Feb
           </Text>
           </View>
-          <TouchableOpacity onPress={() => navigation.navigate('Profil')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Filter Page')}>
             <Feather name="sliders" size={24} color="#7c7c7c" style={{position: 'absolute', marginLeft: 320, marginTop: 60}}/>
           </TouchableOpacity>
           

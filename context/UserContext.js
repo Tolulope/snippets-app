@@ -49,6 +49,12 @@ const reducer = (state, action) => {
             newSelectedDomain.push(action.payload);
         } 
         return { ...state, selectedDomains: newSelectedDomain };
+    case "removeFromData":
+        let newData = state.data;
+        if (state.data.includes(action.payload)) {
+            newData = newData.filter(skill => skill !== action.payload);
+        } 
+        return { ...state, data: newData };
     default:
       return state;
   }
@@ -86,9 +92,13 @@ const handleSelectedDomain = (dispatch) =>  ({ name }) => {
     dispatch({ type: "handleSelectedDomain", payload: name });
 };
 
+const removeFromData = (dispatch) =>  ({ snippet }) => {
+    dispatch({ type: "removeFromData", payload: snippet });
+};
+
 export const { Provider, Context } = createDataContext(
   reducer,
-  { addToLiked, removeFromLiked, addToCompleted, addToInProgress, removeFromInProgress, handleSelectedSkills, handleSelectedLanguage, handleSelectedDomain },
+  { addToLiked, removeFromLiked, removeFromData, addToCompleted, addToInProgress, removeFromInProgress, handleSelectedSkills, handleSelectedLanguage, handleSelectedDomain },
   { 
     skills: [{name: "Graphic Design", icon: "pen-tool"}, {name: "Computer Programming", icon: "terminal"}, {name: "Photography", icon: "camera"}, {name: "Finance", icon: "dollar-sign"}],
     languages1: ["English", "French", "Spanish"],
