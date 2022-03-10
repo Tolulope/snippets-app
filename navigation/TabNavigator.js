@@ -93,7 +93,7 @@ const BottomTabNavigator = () => {
         }} />
       <Tab.Screen
         name="Profil"
-        component={FilterTabs}
+        component={ProfilePage}
         options={{
           tabBarLabel: 'Profile',
           headerShown: false,

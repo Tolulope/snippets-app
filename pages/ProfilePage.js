@@ -3,15 +3,20 @@
 import * as React from 'react';
 import { TouchableOpacity, StyleSheet, View, Text, SafeAreaView, Image} from 'react-native';
 import { useState } from 'react';
+import * as Progress from 'react-native-progress';
+
 
 
 import * as Icon from "react-native-feather";
 import SettingOptions from '../components/SettingOptions';
+import ProfileInfo from '../components/ProfileInfo';
 
 
 const ProfilePage = ({ navigation }) => {
 
   const [tempKey, setTempKey] = useState(false);
+  const [showInfo, setInfo] = useState(false);
+
   // const onPress = () => {
   //     //return component
   //     console.log("pressed");
@@ -21,20 +26,10 @@ const ProfilePage = ({ navigation }) => {
 
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: '4F4F4F' }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#D3E5E5' }}>
       <View style={{ flex: 1 , padding: 16}}>
         <View
           style={styles.view}>
-          {/* <Text
-            style={styles.text}>
-            Profile{'\n'}(You are on ProfilePage)
-          </Text> */}
-          {/* <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Acceuil')}>
-            <Text>Go to Home Tab</Text>
-          </TouchableOpacity> */}
-
           <View style={styles.topRow}>
           
             <TouchableOpacity
@@ -44,17 +39,9 @@ const ProfilePage = ({ navigation }) => {
               <Icon.Settings stroke="black" style={styles.settingsIcon} />
             </TouchableOpacity>
 
-            {/* <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('Acceuil')}>
-            <Text>Go to Home Tab</Text>
-           </TouchableOpacity> */}
+            { tempKey ? <SettingOptions style={styles.settingsoptions} /> : <Text></Text>}
 
-          { tempKey ? <SettingOptions  /> : <Text></Text>}
-
-            <Text style={styles.profileText}>Profile</Text>
-
-            <Icon.Edit stroke="black" style={styles.editIcon} />
+            {/* <Text style={styles.profileText}>Profile</Text> */}
 
           </View>
 
@@ -64,23 +51,42 @@ const ProfilePage = ({ navigation }) => {
               
               style={styles.profilePic}
 
-              source={{uri: 'https://source.unsplash.com/C6oPXOatFD8'}}
+              source={require('../assets/img/alejo.jpg')}
               
               
               />
 
-              <Text style={styles.name}>User's name</Text>
+              <Text style={styles.name}>Alejo Navarro</Text>
 
               <View style={styles.locationWrapper}>
 
-              <Icon.MapPin stroke="#36B6B6" style={styles.locationIcon} />
+                  <Icon.MapPin stroke="#36B6B6" style={styles.locationIcon} />
 
-              <Text style={styles.locationText}>User's Location</Text>
+                  <Text style={styles.locationText}>Palo Alto, California</Text>
 
 
               </View>
 
 
+          </View>
+
+          <View style={styles.progress}>
+            <Text style={styles.levelText}>Level 3</Text>
+            <Progress.Bar progress={0.3} width={300} unfilledColor={'#ffffff'} color={'#36B6B6'} height={15}/>
+
+            <View style={styles.belowLevelText}>
+              <Text style={styles.twoMore}>2 more snippets to level 4  </Text>
+              <TouchableOpacity
+              onPress={() => setInfo(!showInfo)}
+              >
+              <Icon.Info stroke="black" />
+              </TouchableOpacity>
+
+              { showInfo ? <ProfileInfo  /> : <Text></Text>}
+
+
+              
+            </View>
           </View>
 
 
@@ -108,7 +114,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   view: {
-    flex: 1,
+    // flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center',
   }, 
@@ -126,17 +132,20 @@ const styles = StyleSheet.create({
     // padding: 10,
     // paddingTop:128,
     paddingLeft: 32,
-    position: 'absolute',
+    // position: 'absolute',
+    flex: 1,
 
   },
   profileText: {
     fontFamily: "Montserrat_700Bold",
     alignItems: 'center',
     textAlign: 'center',
-    display: 'flex',
-    // justifyContent: 'center',
+    // display: 'flex',
+    justifyContent: 'center',
     fontSize: 24,
     paddingTop: 50,
+    position: 'absolute',
+    // flex:1,
 
   },
 
@@ -150,25 +159,31 @@ const styles = StyleSheet.create({
 
   },
   topRow: {
+    display: 'flex',
     flexDirection: 'row',
-    // justifyContent: 'space-around',
+    // alignItems: 'center',
+    // justifyContent: 'space-between',
   },
   userData: {
-    paddingTop: 60,
+    paddingTop: 25,
     justifyContent: 'center',
     alignItems: 'center',
   },
   profilePic: {
-    width: 250,
-    height:250,
-    borderRadius: 125, //should be half of the width and height to make it circular
+    width: 200,
+    height:200,
+    borderRadius: 100, //should be half of the width and height to make it circular
   }, 
 
   locationWrapper: {
     flexDirection: 'row',
+    paddingTop: 5,
+
   },
-  locationIcon: {},
+  locationIcon: {
+  },
   name: {
+    paddingTop: 15,
     fontSize: 30,
     fontFamily: 'Montserrat_600SemiBold',
   },
@@ -178,6 +193,35 @@ const styles = StyleSheet.create({
 
   },
 
+  settingsoptions: {
+    // flexDirection: 'row',
+    // alignItems: 'center',
+    // flexWrap: 'wrap',
+
+  },
+  progress: {
+    paddingTop: 35,
+    alignItems: 'center',
+
+
+  },
+  levelText: {
+    fontSize: 24,
+    fontFamily: 'Montserrat_600SemiBold',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    color:'#36B6B6',
+  },
+  belowLevelText: {
+    display: 'flex',
+    flexDirection: 'row',
+    // flex: 1,
+  },
+  twoMore: {
+    fontSize: 18,
+    fontFamily: "Montserrat_400Regular",
+  }
 
 });
 export default ProfilePage;
