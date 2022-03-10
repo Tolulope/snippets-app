@@ -11,25 +11,39 @@ import { Shuffle } from 'react-native-feather';
 
 const SkillsPage = ({ navigation }) => {
 
-  const { state, handleSelectedSkills } = useContext(Context);
+  const { state, handleSelectedSkills, handleSelectedLanguage } = useContext(Context);
 
     const [modalVisible, setModalVisible] = useState(false);
-
-    const [englishSelected, setEnglish] = useState(false);
-    const [frenchSelected, setFrench] = useState(false);
-    const [spanishSelected, setSpanish] = useState(false);
-    const [mandarinSelected, setMandarin] = useState(false);
-    const [koreanSelected, setKorean] = useState(false);
-    const [italianSelected, setItalian] = useState(false);
-    const [russianSelected, setRussian] = useState(false);
-    const [signSelected, setSign] = useState(false);
-    const [germanSelected, setGerman] = useState(false);
+    const [applyModalVisible, setApplyModalVisible] = useState(false);
 
   return (
     <ScrollView style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 20, backgroundColor: '#D3E5E5' }} showsVerticalScrollIndicator={false}>
       <View>
         <Text style={styles.subheading}>Select Skills</Text>
       </View>
+
+      <Modal
+            animationType="slide"
+            transparent={true}
+            visible={applyModalVisible}
+            onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setApplyModalVisible(!applyModalVisible);
+            }}
+        >
+        <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+                <Text style={styles.modalText}>Your Changes Have Been Applied</Text>
+                <TouchableOpacity style={[styles.startNowButton, {width: 250}]} onPress={() => {
+                  setApplyModalVisible(!applyModalVisible);
+                  navigation.navigate('Acceuil');
+                }
+                  }>
+                    <Text style={styles.startNowText}>Close</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+      </Modal>
 
       <Modal
         animationType="slide"
@@ -49,8 +63,10 @@ const SkillsPage = ({ navigation }) => {
               state.languages1.map((item, index) => {
                 return (
                 <TouchableOpacity 
-                  style={styles.langBox}
-                  key={index}>
+                  style={[styles.langBox, state.selectedLanguages.includes(item) ? {backgroundColor: '#EBEBEB', borderColor: '#36B6B6', borderWidth: 2}: '']}
+                  key={index}
+                  onPress={() => handleSelectedLanguage({name: item})}
+                  >
                   <Text style={styles.listText}>{item}</Text>
                 </TouchableOpacity>
                 )
@@ -62,8 +78,10 @@ const SkillsPage = ({ navigation }) => {
               state.languages2.map((item, index) => {
                 return (
                 <TouchableOpacity 
-                  style={styles.langBox}
-                  key={index}>
+                  style={[styles.langBox, state.selectedLanguages.includes(item) ? {backgroundColor: '#EBEBEB', borderColor: '#36B6B6', borderWidth: 2}: '']}
+                  key={index}
+                  onPress={() => handleSelectedLanguage({name: item})}
+                  >
                   <Text style={styles.listText}>{item}</Text>
                 </TouchableOpacity>
                 )
@@ -74,28 +92,29 @@ const SkillsPage = ({ navigation }) => {
               {
               state.languages3.map((item, index) => {
                 return (
-                <TouchableOpacity 
-                  style={styles.langBox}
-                  key={index}>
+                <TouchableOpacity
+                  style={[styles.langBox, state.selectedLanguages.includes(item) ? {backgroundColor: '#EBEBEB', borderColor: '#36B6B6', borderWidth: 2}: '']}
+                  key={index}
+                  onPress={() => handleSelectedLanguage({name: item})}
+                  >
                   <Text style={styles.listText}>{item}</Text>
                 </TouchableOpacity>
                 )
                 })
               }
             </View>
-            
+            <TouchableOpacity style={styles.startNowButton} onPress={() => setModalVisible(false)}>
+              <Text style={styles.startNowText}>Close</Text>
+          </TouchableOpacity>
           </View>
         </View>
       </Modal>
-
-
-
       {
         state.skills.map((item, index) => {
               return ( 
                 <TouchableOpacity 
                   onPress={() => handleSelectedSkills({name: item.name})}
-                  style={[styles.listItem, !state.selectedSkills.includes(item.name) ? {backgroundColor: '#EBEBEB', borderColor: '#36B6B6', borderWidth: 2}: '']} 
+                  style={[styles.listItem, state.selectedSkills.includes(item.name) ? {backgroundColor: '#EBEBEB', borderColor: '#36B6B6', borderWidth: 2}: '']} 
                   key={index}>
                   <Feather name={item.icon} size={24} color='#36B6B6' style={styles.icon}/>
                   <Text style={styles.listText}>{item.name}</Text>
@@ -113,8 +132,8 @@ const SkillsPage = ({ navigation }) => {
 
 
        <TouchableOpacity
-            style={styles.startNowButton}
-            // onPress={() => navigation.navigate('Translation Snippet', {ngo: ngo})}
+          style={styles.startNowButton}
+          onPress={() => setApplyModalVisible(true)}
         >
             <Text style={styles.startNowText}> Apply Changes</Text>
         </TouchableOpacity>
@@ -187,16 +206,19 @@ const styles = StyleSheet.create({
     startNowButton: {
         alignItems: 'center',
         flexDirection: 'column',
+        justifyContent: 'center',
         backgroundColor: '#36B6B6',
         padding: 10,
-        marginTop: 16,
-        borderRadius: 10,
+        marginTop: 10,
+        borderRadius: 25,
         paddingHorizontal: 20,
+        height: 50,
+        width: '100%'
     },
     startNowText: {
         fontFamily: "Montserrat_400Regular",
         color: '#FFFFFF',
-        fontSize: 24,
+        fontSize: 20,
     },
     centeredView: {
         flex: 1,
@@ -208,7 +230,8 @@ const styles = StyleSheet.create({
         margin: 20,
         backgroundColor: "white",
         borderRadius: 20,
-        padding: 35,
+        paddingHorizontal: 20,
+        paddingVertical: 35,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -233,7 +256,14 @@ const styles = StyleSheet.create({
         height: 100,
         overflow: 'hidden',
         borderWidth: 2,
-        margin: 2,
+        borderColor: '#CDCDCD',
+        margin: 4,
+      },
+      modalText: {
+        marginBottom: 35,
+        fontSize: 20,
+        fontFamily: "Montserrat_500Medium",
+        textAlign: "center"
       },
 
 

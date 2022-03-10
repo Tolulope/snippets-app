@@ -33,6 +33,22 @@ const reducer = (state, action) => {
             newSelectedSkills.push(action.payload);
         } 
         return { ...state, selectedSkills: newSelectedSkills };
+    case "handleSelectedLanguage":
+        let newSelectedLanguages = state.selectedLanguages;
+        if (state.selectedLanguages.includes(action.payload)) {
+            newSelectedLanguages = newSelectedLanguages.filter(skill => skill !== action.payload);
+        } else {
+            newSelectedLanguages.push(action.payload);
+        } 
+        return { ...state, selectedLanguages: newSelectedLanguages };
+    case "handleSelectedDomain":
+        let newSelectedDomain = state.selectedDomains;
+        if (state.selectedDomains.includes(action.payload)) {
+            newSelectedDomain = newSelectedDomain.filter(skill => skill !== action.payload);
+        } else {
+            newSelectedDomain.push(action.payload);
+        } 
+        return { ...state, selectedDomains: newSelectedDomain };
     default:
       return state;
   }
@@ -62,16 +78,24 @@ const handleSelectedSkills = (dispatch) =>  ({ name }) => {
     dispatch({ type: "handleSelectedSkills", payload: name });
 };
 
+const handleSelectedLanguage = (dispatch) =>  ({ name }) => {
+    dispatch({ type: "handleSelectedLanguage", payload: name });
+};
+
+const handleSelectedDomain = (dispatch) =>  ({ name }) => {
+    dispatch({ type: "handleSelectedDomain", payload: name });
+};
+
 export const { Provider, Context } = createDataContext(
   reducer,
-  { addToLiked, removeFromLiked, addToCompleted, addToInProgress, removeFromInProgress, handleSelectedSkills },
+  { addToLiked, removeFromLiked, addToCompleted, addToInProgress, removeFromInProgress, handleSelectedSkills, handleSelectedLanguage, handleSelectedDomain },
   { 
     skills: [{name: "Graphic Design", icon: "pen-tool"}, {name: "Computer Programming", icon: "terminal"}, {name: "Photography", icon: "camera"}, {name: "Finance", icon: "dollar-sign"}],
     languages1: ["English", "French", "Spanish"],
     languages2: ["Mandarin", "Korean", "Italian"],
     languages3 : ["Russian", "Sign", "German"],
     selectedLanguages: [],
-    domains: [],
+    domains: [{name: "Medicine / Healthcare", icon: "activity"}, {name: "Kids", icon: "users"}, {name: "Music", icon: "music"}, {name: "Education", icon: "book-open"}, {name: "Travel", icon: "briefcase"}, {name: "Sports", icon: "dribbble"}],
     selectedSkills: [],
     selectedDomains: [],
     data: [

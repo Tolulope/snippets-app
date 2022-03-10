@@ -1,107 +1,68 @@
 
 import React, {useContext} from 'react';
-import { TouchableOpacity, StyleSheet, View, Text, ScrollView, Pressable} from 'react-native';
+import { TouchableOpacity, StyleSheet, View, Text, ScrollView, Pressable, Modal } from 'react-native';
 import { Context } from '../context/UserContext';
-
-import { Feather } from '@expo/vector-icons'; 
-
 import { useEffect, useState } from 'react';
 
 
-const DomainsPage = ({ navigation }) => {    
-    const [graphicDesignSelected, setGraphicDesign] = useState(false);
-    const [programmingSelected, setProgramming] = useState(false);
-    const [photographySelected, setPhotography] = useState(false);
-    const [financeSelected, setFinance] = useState(false);
-    const [translationSelected, setTransaltion] = useState(false);
+import { Feather } from '@expo/vector-icons'; 
+import { Shuffle } from 'react-native-feather';
+
+
+const DomainsPage = ({ navigation }) => {
+
+  const { state, handleSelectedDomain } = useContext(Context);
+  const [applyModalVisible, setApplyModalVisible] = useState(false);
 
   return (
     <ScrollView style={{ flex: 1, paddingHorizontal: 16, paddingVertical: 20, backgroundColor: '#D3E5E5' }} showsVerticalScrollIndicator={false}>
       <View>
-        <Text style={styles.subheading}>Select Skills</Text>
+        <Text style={styles.subheading}>Select Domains</Text>
       </View>
 
-       <Pressable
-       onPress={() => setGraphicDesign(!graphicDesignSelected)}
-       style={({ pressed }) => [{ backgroundColor: graphicDesignSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
-       >
-            <View style={styles.item}>
-                <View style={styles.itemLeft}>
-                <Feather name="pen-tool" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}>Graphic Design</Text>
-                </View>
+      <Modal
+            animationType="slide"
+            transparent={true}
+            visible={applyModalVisible}
+            onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setApplyModalVisible(!applyModalVisible);
+            }}
+        >
+        <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+                <Text style={styles.modalText}>Your Changes Have Been Applied</Text>
+                <TouchableOpacity style={[styles.startNowButton, {width: 250}]} onPress={() => {
+                  setApplyModalVisible(!applyModalVisible);
+                  navigation.navigate('Acceuil');
+                }
+                  }>
+                    <Text style={styles.startNowText}>Close</Text>
+                </TouchableOpacity>
             </View>
-       </Pressable>
+        </View>
+      </Modal>
 
-
-       <Pressable
-       onPress={() => setProgramming(!programmingSelected)}
-       style={({ pressed }) => [{ backgroundColor: programmingSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
-       >
-            <View style={styles.item}>
-                <View style={styles.itemLeft}>
-                <Feather name="terminal" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}>Computer Programming</Text>
-                </View>
-            </View>
-       </Pressable>
-
-       <Pressable
-       onPress={() => setPhotography(!photographySelected)}
-       style={({ pressed }) => [{ backgroundColor: photographySelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
-       >
-            <View style={styles.item}>
-                <View style={styles.itemLeft}>
-                <Feather name="camera" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}>Photography</Text>
-                </View>
-            </View>
-       </Pressable>
-
-
-       <Pressable
-       onPress={() => setFinance(!financeSelected)}
-       style={({ pressed }) => [{ backgroundColor: financeSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
-       >
-            <View style={styles.item}>
-                <View style={styles.itemLeft}>
-                <Feather name="dollar-sign" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}>Finance</Text>
-                </View>
-            </View>
-       </Pressable>
-
-
-       {/* <Pressable
-       onPress={() => setTransaltion(!translationSelected)}
-       style={({ pressed }) => [{ backgroundColor: translationSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
-       >
-            <View style={styles.item}>
-                <View style={styles.itemLeft}>
-                <Feather name="repeat" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}> Language Translation</Text>
-                </View>
-            </View>
-       </Pressable> */}
-
-       <Pressable
-       onPress={() => setTransaltion(!translationSelected)}
-       style={({ pressed }) => [{ backgroundColor: translationSelected ? '#36B6B6' : '#FFFFFF' }, styles.pressStyle ]}
-       >
-            <View style={styles.item}>
-                <View style={styles.itemLeft}>
-                <Feather name="repeat" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}> Language Translation</Text>
-                </View>
-            </View>
-       </Pressable>
-
+      {
+        state.domains.map((item, index) => {
+            return ( 
+            <TouchableOpacity 
+                onPress={() => handleSelectedDomain({name: item.name})}
+                style={[styles.listItem, state.selectedDomains.includes(item.name) ? {backgroundColor: '#EBEBEB', borderColor: '#36B6B6', borderWidth: 2}: '']} 
+                key={index}>
+                <Feather name={item.icon} size={24} color='#36B6B6' style={styles.icon}/>
+                <Text style={styles.listText}>{item.name}</Text>
+            </TouchableOpacity>
+            )
+            })
+        }
        <TouchableOpacity
-            style={styles.startNowButton}
-            // onPress={() => navigation.navigate('Translation Snippet', {ngo: ngo})}
+          style={styles.startNowButton}
+          onPress={() => setApplyModalVisible(true)}
         >
             <Text style={styles.startNowText}> Apply Changes</Text>
         </TouchableOpacity>
+
 
     </ScrollView>
 );
@@ -112,6 +73,14 @@ const styles = StyleSheet.create({
         fontFamily: "Montserrat_600SemiBold",
         fontSize: 20,
         marginBottom: 20,
+    },
+    listItem: {
+      marginBottom: 10,
+      flexDirection: 'row',
+      backgroundColor: '#FFFFFF',
+      height: 50,
+      borderRadius: 25,
+      alignItems: 'center'
     },
     item:{
         // backgroundColor: '#FFF',
@@ -136,7 +105,7 @@ const styles = StyleSheet.create({
         marginRight: 15,
     },
     icon: {
-        marginRight: 15,
+        marginHorizontal: 15,
     },
     itemText: {
         maxWidth: '80%',
@@ -162,18 +131,65 @@ const styles = StyleSheet.create({
     startNowButton: {
         alignItems: 'center',
         flexDirection: 'column',
+        justifyContent: 'center',
         backgroundColor: '#36B6B6',
         padding: 10,
-        marginTop: 16,
-        borderRadius: 10,
+        marginTop: 10,
+        borderRadius: 25,
         paddingHorizontal: 20,
+        height: 50,
+        width: '100%'
     },
     startNowText: {
         fontFamily: "Montserrat_400Regular",
         color: '#FFFFFF',
-        fontSize: 24,
+        fontSize: 20,
     },
-
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+      },
+      modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        paddingHorizontal: 20,
+        paddingVertical: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+      },
+      langRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      },
+      langBox: {
+        alignItems: 'center',
+        borderRadius: 10,
+        borderColor: '#808080',
+        // backgroundColor: '#808080',
+        justifyContent: 'center',
+        width: 100,
+        height: 100,
+        overflow: 'hidden',
+        borderWidth: 2,
+        borderColor: '#CDCDCD',
+        margin: 4,
+      },
+      modalText: {
+        marginBottom: 35,
+        fontSize: 20,
+        fontFamily: "Montserrat_500Medium",
+        textAlign: "center"
+      },
 
 
 });
