@@ -31,6 +31,65 @@ const SkillsPage = ({ navigation }) => {
         <Text style={styles.subheading}>Select Skills</Text>
       </View>
 
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Because you chose "Language Translation"</Text>
+            <Text style={styles.modalText}>Select your languages</Text>
+            <View style={{flexDirection: 'row'}}>
+              {
+              state.languages1.map((item, index) => {
+                return (
+                <TouchableOpacity 
+                  style={styles.langBox}
+                  key={index}>
+                  <Text style={styles.listText}>{item}</Text>
+                </TouchableOpacity>
+                )
+                })
+              }
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              {
+              state.languages2.map((item, index) => {
+                return (
+                <TouchableOpacity 
+                  style={styles.langBox}
+                  key={index}>
+                  <Text style={styles.listText}>{item}</Text>
+                </TouchableOpacity>
+                )
+                })
+              }
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              {
+              state.languages3.map((item, index) => {
+                return (
+                <TouchableOpacity 
+                  style={styles.langBox}
+                  key={index}>
+                  <Text style={styles.listText}>{item}</Text>
+                </TouchableOpacity>
+                )
+                })
+              }
+            </View>
+            
+          </View>
+        </View>
+      </Modal>
+
+
+
       {
         state.skills.map((item, index) => {
               return ( 
@@ -44,7 +103,10 @@ const SkillsPage = ({ navigation }) => {
               )
             })
         }
-        <TouchableOpacity style={styles.listItem}>
+        <TouchableOpacity 
+          onPress={() => setModalVisible(true)}
+          style={[styles.listItem, state.selectedLanguages.length > 0 ? {backgroundColor: '#EBEBEB', borderColor: '#36B6B6', borderWidth: 2}: '']} 
+        >
           <Feather name="repeat" size={24} color='#36B6B6' style={styles.icon}/>
           <Text style={styles.listText}>Language Translation</Text>
         </TouchableOpacity>

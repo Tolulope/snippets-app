@@ -67,7 +67,9 @@ export const { Provider, Context } = createDataContext(
   { addToLiked, removeFromLiked, addToCompleted, addToInProgress, removeFromInProgress, handleSelectedSkills },
   { 
     skills: [{name: "Graphic Design", icon: "pen-tool"}, {name: "Computer Programming", icon: "terminal"}, {name: "Photography", icon: "camera"}, {name: "Finance", icon: "dollar-sign"}],
-    languages : ["English", "French", "Spanish", "Mandarin", "Korean", "Italian", "Russian", "Sign", "German"],
+    languages1: ["English", "French", "Spanish"],
+    languages2: ["Mandarin", "Korean", "Italian"],
+    languages3 : ["Russian", "Sign", "German"],
     selectedLanguages: [],
     domains: [],
     selectedSkills: [],
