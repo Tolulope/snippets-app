@@ -25,6 +25,14 @@ const reducer = (state, action) => {
         let newCompleted = state.completed;
         newCompleted.push(action.payload);
         return { ...state, completed: newCompleted }; 
+    case "handleSelectedSkills":
+        let newSelectedSkills = state.selectedSkills;
+        if (state.selectedSkills.includes(action.payload)) {
+            newSelectedSkills = newSelectedSkills.filter(skill => skill !== action.payload);
+        } else {
+            newSelectedSkills.push(action.payload);
+        } 
+        return { ...state, selectedSkills: newSelectedSkills };
     default:
       return state;
   }
@@ -50,9 +58,13 @@ const addToCompleted = (dispatch) =>  ({ snippet }) => {
     dispatch({ type: "addToCompleted", payload: snippet });
 };
 
+const handleSelectedSkills = (dispatch) =>  ({ name }) => {
+    dispatch({ type: "handleSelectedSkills", payload: name });
+};
+
 export const { Provider, Context } = createDataContext(
   reducer,
-  { addToLiked, removeFromLiked, addToCompleted, addToInProgress, removeFromInProgress },
+  { addToLiked, removeFromLiked, addToCompleted, addToInProgress, removeFromInProgress, handleSelectedSkills },
   { 
     skills: [{name: "Graphic Design", icon: "pen-tool"}, {name: "Computer Programming", icon: "terminal"}, {name: "Photography", icon: "camera"}, {name: "Finance", icon: "dollar-sign"}],
     languages : ["English", "French", "Spanish", "Mandarin", "Korean", "Italian", "Russian", "Sign", "German"],

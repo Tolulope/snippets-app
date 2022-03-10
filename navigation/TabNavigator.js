@@ -10,7 +10,7 @@ import CompletedPage from '../pages/CompletedPage';
 import LikedPage from '../pages/LikedPage';
 import InProgressPage from '../pages/InProgressPage';
 
-import SkillsPage from '../pages/SkillsPage';
+import SkillsPage from '../pages/SkillsPageNew';
 import DomainsPage from '../pages/DomainsPage';
 
 import * as Icon from "react-native-feather";

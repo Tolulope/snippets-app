@@ -11,7 +11,7 @@ import { Shuffle } from 'react-native-feather';
 
 const SkillsPage = ({ navigation }) => {
 
-  const { state } = useContext(Context);
+  const { state, handleSelectedSkills } = useContext(Context);
 
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -34,13 +34,20 @@ const SkillsPage = ({ navigation }) => {
       {
         state.skills.map((item, index) => {
               return ( 
-                <TouchableOpacity style={styles.listItem} key={index}>
+                <TouchableOpacity 
+                  onPress={() => handleSelectedSkills({name: item.name})}
+                  style={[styles.listItem, !state.selectedSkills.includes(item.name) ? {backgroundColor: '#EBEBEB', borderColor: '#36B6B6', borderWidth: 2}: '']} 
+                  key={index}>
                   <Feather name={item.icon} size={24} color='#36B6B6' style={styles.icon}/>
                   <Text style={styles.listText}>{item.name}</Text>
                 </TouchableOpacity>
               )
             })
         }
+        <TouchableOpacity style={styles.listItem}>
+          <Feather name="repeat" size={24} color='#36B6B6' style={styles.icon}/>
+          <Text style={styles.listText}>Language Translation</Text>
+        </TouchableOpacity>
 
 
        <TouchableOpacity
