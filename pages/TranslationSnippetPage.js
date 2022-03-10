@@ -304,20 +304,20 @@ startNowText: {
     color: '#FFFFFF',
 },
 viewSnippetButton: {
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#CDCDCD',
-    borderWidth: 2,
-    padding: 10,
-    marginVertical: 10,
-    borderRadius: 10,
-    marginHorizontal: 5,
-    paddingHorizontal: 20,
-    flex: 1
+  alignItems: 'center',
+  backgroundColor: '#FFFFFF',
+  borderColor: '#CDCDCD',
+  borderWidth: 2,
+  padding: 10,
+  marginVertical: 10,
+  borderRadius: 10,
+  marginHorizontal: 5,
+  paddingHorizontal: 20,
+  flex: 1
 },
 viewSnippetText: {
-    fontFamily: "Montserrat_400Regular",
-    color:  '#36B6B6',
+  fontFamily: "Montserrat_400Regular",
+  color:  '#36B6B6',
 },
 ngoSubtitle: {
     flexDirection: 'row',

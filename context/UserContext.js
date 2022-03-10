@@ -54,6 +54,12 @@ export const { Provider, Context } = createDataContext(
   reducer,
   { addToLiked, removeFromLiked, addToCompleted, addToInProgress, removeFromInProgress },
   { 
+    skills: [{name: "Graphic Design", icon: "pen-tool"}, {name: "Computer Programming", icon: "terminal"}, {name: "Photography", icon: "camera"}, {name: "Finance", icon: "dollar-sign"}],
+    languages : ["English", "French", "Spanish", "Mandarin", "Korean", "Italian", "Russian", "Sign", "German"],
+    selectedLanguages: [],
+    domains: [],
+    selectedSkills: [],
+    selectedDomains: [],
     data: [
         {
         name: "Pets in Need", 
