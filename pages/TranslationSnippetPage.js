@@ -122,11 +122,11 @@ const TranslationSnippetPage = ({ navigation, route }) => {
               <View style={{marginBottom: 16}}>
                 <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 5}}>
                 <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16}}>Current Progress: </Text>
-                <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16, color: '#EE2E2E'}}>0%</Text>
+                <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16, color: '#36B6B6'}}>0%</Text>
                 </View>
                 <View style={{flexDirection: 'row', justifyContent: 'center', marginBottom: 5}}>
                 <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16}}>Time Left: </Text>
-                <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16, color: '#EE2E2E'}}>{ngo.allowed} minutes</Text>
+                <Text style={{alignSelf: 'center', fontFamily: "Montserrat_600SemiBold", fontSize: 16, color: '#36B6B6'}}>{ngo.allowed} minutes</Text>
                 </View>
                 
               <Progress.Bar progress={0.01} width={null} unfilledColor={'#ffffff'} color={'#36B6B6'} height={8}/>

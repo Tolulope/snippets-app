@@ -80,13 +80,9 @@ const ProfilePage = ({ navigation }) => {
               onPress={() => setInfo(!showInfo)}
               >
               <Icon.Info stroke="black" />
-              </TouchableOpacity>
-
-              { showInfo ? <ProfileInfo  /> : <Text></Text>}
-
-
-              
+              </TouchableOpacity>              
             </View>
+            { showInfo ? <ProfileInfo  /> : <Text></Text>}
           </View>
 
 

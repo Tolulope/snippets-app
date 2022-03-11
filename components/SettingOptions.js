@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         // padding: 100,
         paddingLeft: 10,
         width: 142, 
-        height: 85,
+        height: 45,
         borderRadius: 15,
         backgroundColor: '#FFFFFF',
         zIndex: 3, // works on ios
