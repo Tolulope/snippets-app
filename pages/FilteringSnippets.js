@@ -17,7 +17,7 @@ const FilteringSnippets = ({ navigation }) => {
 
   return (
         <View style={styles.view}>
-            <TouchableOpacity onPress={() => navigation.pop()} style={{ marginTop: 10, marginLeft: -300}}>
+            <TouchableOpacity onPress={() => navigation.pop()} style={{ top: 63, left: 18, position: "absolute"}}>
                 <Feather name="chevron-left" size={32} color="#2D3142" />
             </TouchableOpacity>
             <View style={styles.elements}>
@@ -26,7 +26,7 @@ const FilteringSnippets = ({ navigation }) => {
                 <View style={styles.item}>
                     <Text style={styles.ngoName}>Filtering 'Snippets'</Text>
                     <View style={styles.ngoSubtitle}>
-                    <Text style={styles.lightText}>You can filter your ‘Snippets’ directly from the home page based on your skills or prefered domain</Text>
+                    <Text style={styles.lightText}>You can filter your ‘Snippets’ directly from the home page based on your skills or prefered domain.</Text>
                     </View>
                 </View>
 
@@ -37,12 +37,12 @@ const FilteringSnippets = ({ navigation }) => {
                 {
                 state.skills.map((item, index) => {
                     return ( 
-                        <TouchableOpacity 
+                        <View
                         style={styles.listItem} 
                         key={index}>
                         <Feather name={item.icon} size={24} color='#36B6B6' style={styles.icon}/>
                         <Text style={styles.listText}>{item.name}</Text>
-                        </TouchableOpacity>
+                        </View>
                     )
                     })
                 }
@@ -58,7 +58,7 @@ const FilteringSnippets = ({ navigation }) => {
 
 
                 <TouchableOpacity
-                    style={styles.startNowButton}
+                    style={styles.nextButton}
                     onPress={() => navigation.navigate('BottomTabNavigator', {screen: 'Acceuil'})}
                 >
                     <Text style={styles.startNowText}>Let's go!</Text>
@@ -75,25 +75,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#D3E5E5',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: -20
   },
   title: {
     fontFamily: "Montserrat_600SemiBold",
-    fontSize: 25,
+    fontSize: 32,
     color: '#234099',
-    paddingBottom: 10,
   },
   logo: {
     width: 500,
     height:500,
     flex: 0.6,
   },
-  startNowButton: {
+  nextButton: {
     alignItems: 'center',
     backgroundColor: '#36B6B6',
     padding: 10,
     width: 300,
-    marginTop: 16,
+    marginBottom: 16,
     borderRadius: 10,
     paddingHorizontal: 20,
 },
@@ -105,9 +103,10 @@ item:{
     backgroundColor: '#FFF',
     padding: 20,
     borderRadius: 20,
-    marginBottom: 15, 
+    marginTop:20,
+    marginBottom: 40, 
     width: 320,
-    height: 140,
+    height: 130,
 },
 // ngoSubtitle: {
 //     flexDirection: 'row',
@@ -122,7 +121,7 @@ listItem: {
     marginBottom: 10,
     flexDirection: 'row',
     backgroundColor: '#FFFFFF',
-    height: 50,
+    height: 42,
     width: 320,
     borderRadius: 25,
     alignItems: 'center'
@@ -165,6 +164,7 @@ whiteProgress: {
     marginHorizontal: 6,
 },
 progress: {
+    marginTop:30,
     flexDirection: 'row',
     justifyContent: 'space-between',
 },
@@ -243,15 +243,6 @@ estimatedTime: {
 previewButtons: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-},
-startNowButton: {
-    alignItems: 'center',
-    backgroundColor: '#36B6B6',
-    padding: 10,
-    width: 150,
-    marginTop: 16,
-    borderRadius: 10,
-    paddingHorizontal: 20,
 },
 startNowText: {
     fontFamily: "Montserrat_400Regular",

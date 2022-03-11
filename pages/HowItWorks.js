@@ -17,7 +17,7 @@ const HowItWorks = ({ navigation }) => {
 
   return (
         <View style={styles.view}>
-            <TouchableOpacity onPress={() => navigation.pop()} style={{ marginTop: 10, marginLeft: -300}}>
+            <TouchableOpacity onPress={() => navigation.pop()} style={{ top: 63, left: 18, position: "absolute"}}>
                 <Feather name="chevron-left" size={32} color="#2D3142" />
             </TouchableOpacity>
             <View style={styles.elements}>
@@ -26,7 +26,7 @@ const HowItWorks = ({ navigation }) => {
                 <View style={styles.item}>
                     <Text style={styles.ngoName}>How it works</Text>
                     <View style={styles.ngoSubtitle}>
-                    <Text style={styles.lightText}>Browse through our ‘Snippets’ and select one you would like to work on. You will have a fixed amount of time to complete it</Text>
+                    <Text style={styles.lightText}>Browse through our ‘Snippets’ and select one you would like to work on. You will have a fixed amount of time to complete it.</Text>
                     </View>
                 </View>
 
@@ -86,7 +86,7 @@ const HowItWorks = ({ navigation }) => {
                 </View>
 
                 <TouchableOpacity
-                    style={styles.startNowButton}
+                    style={styles.nextButton}
                     onPress={() => navigation.navigate('Saving Snippets')}
                 >
                     <Text style={styles.startNowText}>Next</Text>
@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
         flex: 0.6,
         marginTop: 40
       },
-      startNowButton: {
+      nextButton: {
         alignItems: 'center',
         backgroundColor: '#36B6B6',
         padding: 10,
         width: 300,
-        marginTop: 20,
+        marginBottom: 20,
         borderRadius: 10,
         paddingHorizontal: 20,
     },

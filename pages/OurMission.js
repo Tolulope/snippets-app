@@ -15,7 +15,7 @@ const OurMission = ({ navigation }) => {
 
   return (
         <View style={styles.view}>
-            <TouchableOpacity onPress={() => navigation.pop()} style={{ marginTop: 10, marginLeft: -300}}>
+            <TouchableOpacity onPress={() => navigation.pop()} style={{ top: 63, left: 18, position: "absolute"}}>
                 <Feather name="chevron-left" size={32} color="#2D3142" />
             </TouchableOpacity>
             <View style={styles.elements}>
@@ -29,7 +29,7 @@ const OurMission = ({ navigation }) => {
                 <View style={styles.item}>
                     <Text style={styles.ngoName}>Our Mission</Text>
                     <View style={styles.ngoSubtitle}>
-                    <Text style={styles.lightText}>To empower microvolunteering in your free time by giving you a platform to connect with and help NGOs at any time</Text>
+                    <Text style={styles.lightText}>To empower people to microvolunteer in their spare time.</Text>
                     </View>
                 </View>
 
@@ -41,7 +41,7 @@ const OurMission = ({ navigation }) => {
                 </View>
 
                 <TouchableOpacity
-                    style={styles.startNowButton}
+                    style={styles.nextButton}
                     onPress={() => navigation.navigate('How it works')}
                 >
                     <Text style={styles.startNowText}>Next</Text>
@@ -70,17 +70,17 @@ const styles = StyleSheet.create({
     flex: 0.6,
     marginTop: 40
   },
-  startNowButton: {
+  nextButton: {
     alignItems: 'center',
     backgroundColor: '#36B6B6',
     padding: 10,
     width: 300,
-    marginTop: 20,
+    marginBottom: 20,
     borderRadius: 10,
     paddingHorizontal: 20,
 },
 startNowText: {
-    fontFamily: "Montserrat_600SemiBold",
+    fontFamily: "Montserrat_400Regular",
     color: '#FFFFFF',
 },
 item:{
@@ -90,7 +90,7 @@ item:{
     marginBottom: 100, 
     marginTop: 40,
     width: 320,
-    height: 140,
+    height: 120,
 },
 ngoSubtitle: {
     flexDirection: 'row',
@@ -99,7 +99,7 @@ ngoSubtitle: {
 ngoName: {
     fontFamily: "Montserrat_700Bold",
     paddingBottom: 10,
-    fontSize: 16,
+    fontSize: 20,
 },
 lightText: {
     fontFamily: "Montserrat_300Light",

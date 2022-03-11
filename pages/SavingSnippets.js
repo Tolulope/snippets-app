@@ -17,16 +17,16 @@ const SavingSnippets = ({ navigation }) => {
 
   return (
         <View style={styles.view}>
-            <TouchableOpacity onPress={() => navigation.pop()} style={{ marginTop: 10, marginLeft: -300}}>
+            <TouchableOpacity onPress={() => navigation.pop()} style={{top: 63, left: 18, position: "absolute"}}>
                 <Feather name="chevron-left" size={32} color="#2D3142" />
             </TouchableOpacity>
             <View style={styles.elements}>
                 <Text style={styles.title}>Snippets</Text>
 
                 <View style={styles.item}>
-                    <Text style={styles.ngoName}>Saving 'Snippets'</Text>
+                    <Text style={styles.ngoName}>Liking 'Snippets'</Text>
                     <View style={styles.ngoSubtitle}>
-                    <Text style={styles.lightText}>You can like a ‘Snippet’ to add it to your library and complete it later. Also, any progress on a ‘Snippet’ will be automatically saved</Text>
+                    <Text style={styles.lightText}>You can like a ‘Snippet’ to add it to your library and complete it later. Also, any progress on a ‘Snippet’ will be automatically saved.</Text>
                     </View>
                 </View>
 
@@ -86,7 +86,7 @@ const SavingSnippets = ({ navigation }) => {
                 </View>
 
                 <TouchableOpacity
-                    style={styles.startNowButton}
+                    style={styles.nextButton}
                     onPress={() => navigation.navigate('Filtering Snippets')}
                 >
                     <Text style={styles.startNowText}>Next</Text>
@@ -115,12 +115,12 @@ const styles = StyleSheet.create({
         flex: 0.6,
         marginTop: 40
       },
-      startNowButton: {
+      nextButton: {
         alignItems: 'center',
         backgroundColor: '#36B6B6',
         padding: 10,
         width: 300,
-        marginTop: 20,
+        marginBottom: 20,
         borderRadius: 10,
         paddingHorizontal: 20,
     },
