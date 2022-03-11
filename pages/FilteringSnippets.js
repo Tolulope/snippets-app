@@ -6,16 +6,20 @@ import { LogBox } from 'react-native';
 // LogBox.ignoreAllLogs();//Ignore all log notifications
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
+import { Context } from '../context/UserContext';
 
 
 LogBox.ignoreLogs(['Setting a timer']);
 
 
 const FilteringSnippets = ({ navigation }) => {
+    const {state} = useContext(Context);
 
   return (
         <View style={styles.view}>
-
+            <TouchableOpacity onPress={() => navigation.pop()} style={{ marginTop: 10, marginLeft: -300}}>
+                <Feather name="chevron-left" size={32} color="#2D3142" />
+            </TouchableOpacity>
             <View style={styles.elements}>
                 <Text style={styles.title}>Snippets</Text>
 
@@ -28,41 +32,22 @@ const FilteringSnippets = ({ navigation }) => {
 
                 <Text style={styles.ngoName}>Example Filtering Categories</Text>
 
-
-                <Pressable
-       style={styles.pressStyle}
-       >
-            <View style={styles.itemFilter}>
-                <View style={styles.itemLeft}>
-                <Feather name="pen-tool" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}>Graphic Design</Text>
                 </View>
-            </View>
-       </Pressable>
 
+                {
+                state.skills.map((item, index) => {
+                    return ( 
+                        <TouchableOpacity 
+                        style={styles.listItem} 
+                        key={index}>
+                        <Feather name={item.icon} size={24} color='#36B6B6' style={styles.icon}/>
+                        <Text style={styles.listText}>{item.name}</Text>
+                        </TouchableOpacity>
+                    )
+                    })
+                }
 
-       <Pressable
-       style={styles.pressStyle}
-       >
-            <View style={styles.itemFilter}>
-                <View style={styles.itemLeft}>
-                <Feather name="terminal" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}>Computer Programming</Text>
-                </View>
-            </View>
-       </Pressable>
-
-       <Pressable       style={styles.pressStyle}
-       >
-            <View style={styles.itemFilter}>
-                <View style={styles.itemLeft}>
-                <Feather name="camera" size={24} color='#36B6B6' style={styles.icon}/>
-                <Text style={styles.listText}>Photography</Text>
-                </View>
-            </View>
-       </Pressable>
-
-
+                <View style={styles.elements}>
                 <View style={styles.progress}>
                     <View style={styles.blueProgress}></View>
                     <View style={styles.blueProgress}></View>
@@ -90,6 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#D3E5E5',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: -20
   },
   title: {
     fontFamily: "Montserrat_600SemiBold",
@@ -132,6 +118,15 @@ item:{
 //     paddingBottom: 10,
 //     fontSize: 16,
 // },
+listItem: {
+    marginBottom: 10,
+    flexDirection: 'row',
+    backgroundColor: '#FFFFFF',
+    height: 50,
+    width: 320,
+    borderRadius: 25,
+    alignItems: 'center'
+  },
 lightText: {
     fontFamily: "Montserrat_300Light",
     fontSize: 14,
@@ -312,7 +307,7 @@ square: {
     marginRight: 15,
 },
 icon: {
-    marginRight: 15,
+    marginHorizontal: 15,
 },
 itemText: {
     maxWidth: '80%',

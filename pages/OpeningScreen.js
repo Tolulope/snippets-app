@@ -4,8 +4,8 @@ import { SearchBar } from 'react-native-elements';
 import SnippetPreview from '../components/SnippetPreview';
 import { LogBox } from 'react-native';
 // When we decide we are good to go, we can ignore all notifications by uncommenting these two lines
-// LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
-// LogBox.ignoreAllLogs();//Ignore all log notifications
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 
 LogBox.ignoreLogs(['Setting a timer']);
@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontFamily: "Montserrat_400Regular",
-    fontSize: 25,
+    fontFamily: "Montserrat_500Medium",
+    fontSize: 40,
     color: '#FFFFFF',
   },
   logo: {
