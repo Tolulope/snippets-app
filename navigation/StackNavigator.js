@@ -13,6 +13,7 @@ import TranslationSnippet from '../pages/TranslationSnippetPage';
 import ReviewPage from "../pages/ReviewPage";
 import SkillsPage from '../pages/SkillsPageNew';
 import DomainsPage from '../pages/DomainsPage';
+const TopTab = createMaterialTopTabNavigator();
 
 import HomePage from "../pages/HomePage";
 import OpeningScreen from "../pages/OpeningScreen";
