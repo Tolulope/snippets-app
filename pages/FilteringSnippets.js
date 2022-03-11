@@ -17,7 +17,7 @@ const FilteringSnippets = ({ navigation }) => {
 
   return (
         <View style={styles.view}>
-            <TouchableOpacity onPress={() => navigation.pop()} style={{ marginTop: 10, marginLeft: -300}}>
+            <TouchableOpacity onPress={() => navigation.pop()} style={{ marginLeft: -300}}>
                 <Feather name="chevron-left" size={32} color="#2D3142" />
             </TouchableOpacity>
             <View style={styles.elements}>
@@ -77,12 +77,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: -20
   },
-  title: {
-    fontFamily: "Montserrat_600SemiBold",
-    fontSize: 25,
-    color: '#234099',
-    paddingBottom: 10,
-  },
+      title: {
+        fontFamily: "Montserrat_600SemiBold",
+        fontSize: 32,
+        color: '#234099',
+        marginBottom: 20
+      },
   logo: {
     width: 500,
     height:500,
