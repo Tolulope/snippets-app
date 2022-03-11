@@ -12,6 +12,11 @@ import TranslationSnippet from '../pages/TranslationSnippetPage';
 import ReviewPage from "../pages/ReviewPage";
 
 import HomePage from "../pages/HomePage";
+import OpeningScreen from "../pages/OpeningScreen";
+import OurMission from "../pages/OurMission";
+import HowItWorks from "../pages/HowItWorks";
+import SavingSnippets from "../pages/SavingSnippets";
+import FilteringSnippets from "../pages/FilteringSnippets";
 
 
 
@@ -37,10 +42,32 @@ const MainStackNavigator = () => {
           headerShown: false,
         }}>
         {/* <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} /> */}
+        <Stack.Screen options={{ headerShown: false }} name="Onboarding" component={OnboardingStackNavigator} />
         <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ title: 'Tab Navigation' }}/>
       </Stack.Navigator>
   );
 };
+
+const OnboardingStackNavigator = ( {navigation} ) => {
+  return (
+    <Stack.Navigator
+        initialRouteName="OpeningScreen"
+        screenOptions={{
+          // headerStyle: { backgroundColor: '#633689' },
+          // headerTintColor: '#fff',
+          headerTitleStyle: { fontWeight: 'bold' },
+          // headerShown: false,
+        }}>
+        <Stack.Screen options={{ headerShown: false }} name="OpeningScreen" component={OpeningScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Our Mission" component={OurMission} />
+        <Stack.Screen options={{ headerShown: false }} name="How it works" component={HowItWorks} />
+        <Stack.Screen options={{ headerShown: false }} name="Saving Snippets" component={SavingSnippets} />
+        <Stack.Screen options={{ headerShown: false }} name="Filtering Snippets" component={FilteringSnippets} />
+        {/* <Stack.Screen name="BottomTabNavigator" component={BottomTabNavigator} options={{ title: 'Tab Navigation' }}/> */}
+      </Stack.Navigator>
+  );
+};
+
 
 const SnippetStackNavigator = ( {navigation} ) => {
   return (
@@ -63,4 +90,4 @@ const SnippetStackNavigator = ( {navigation} ) => {
 };
 
 
-export { MainStackNavigator, SnippetStackNavigator };
+export { MainStackNavigator, SnippetStackNavigator, OnboardingStackNavigator };
