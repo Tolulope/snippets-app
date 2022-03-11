@@ -13,7 +13,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [discardModalVisible, setDiscardModalVisible] = useState(false);
   const { ngo } = route.params;
-  const { state, addToCompleted, addToInProgress, removeFromInProgress, addToLiked, removeFromLiked } = useContext(Context);
+  const { state, removeFromData, addToCompleted, addToInProgress, removeFromInProgress, addToLiked, removeFromLiked } = useContext(Context);
 
 
   const goToHome = () => {
@@ -62,6 +62,7 @@ const TranslationSnippetPage = ({ navigation, route }) => {
               onPress={() => {
                 addToCompleted({ snippet: ngo });
                 removeFromInProgress({ snippet: ngo });
+                removeFromData({snippet:ngo});
                 goToHome();
               }
               }
