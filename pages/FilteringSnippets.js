@@ -18,6 +18,7 @@ const FilteringSnippets = ({ navigation }) => {
   return (
         <View style={styles.view}>
             <TouchableOpacity onPress={() => navigation.pop()} style={{ top: 63, left: 18, position: "absolute"}}>
+
                 <Feather name="chevron-left" size={32} color="#2D3142" />
             </TouchableOpacity>
             <View style={styles.elements}>
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: '#234099',
   },
+
   logo: {
     width: 500,
     height:500,

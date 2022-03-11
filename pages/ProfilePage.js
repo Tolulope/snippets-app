@@ -72,7 +72,7 @@ const ProfilePage = ({ navigation }) => {
 
           <View style={styles.progress}>
             <Text style={styles.levelText}>Level 3</Text>
-            <Progress.Bar progress={0.3} width={300} unfilledColor={'#ffffff'} color={'#36B6B6'} height={15}/>
+            <Progress.Bar progress={0.3} width={300} unfilledColor={'#ffffff'} color={'#36B6B6'} height={10}/>
 
             <View style={styles.belowLevelText}>
               <Text style={styles.twoMore}>2 more snippets to level 4  </Text>
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
 
   },
   progress: {
-    paddingTop: 35,
+    paddingTop: 20,
     alignItems: 'center',
 
 
@@ -212,6 +212,7 @@ const styles = StyleSheet.create({
   belowLevelText: {
     display: 'flex',
     flexDirection: 'row',
+    marginTop: 5
     // flex: 1,
   },
   twoMore: {

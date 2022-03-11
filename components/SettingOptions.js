@@ -27,10 +27,10 @@ const SettingOptions = () => {
         <View style={styles.previewWrapper}>
 
             <TouchableOpacity
-                onPress={handleSignOut}
+                onPress={() => navigation.navigate('OpeningScreen')}
             >
                 <View style={styles.signOut}>
-                    <Icon.LogOut stroke="red" />
+                    <Icon.LogOut stroke="red" style={{marginRight: 10}}/>
 
                     <Text>Sign out</Text>
                 </View>
@@ -43,20 +43,23 @@ const SettingOptions = () => {
 const styles = StyleSheet.create({
     previewWrapper: {
         marginTop: 30,
-        // padding: 100,
-        paddingLeft: 10,
-        width: 142, 
-        height: 45,
+        // width: 142, 
+        // height: 45,
         borderRadius: 15,
         backgroundColor: '#FFFFFF',
         zIndex: 3, // works on ios
         elevation: 3, // works on android
-        // flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignContent: 'center'
     },
     signOut: {
         margin: 15,
+
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
+        alignContent: 'center',
+        alignItems: 'center'
 
     },
     item:{

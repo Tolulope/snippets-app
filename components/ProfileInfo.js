@@ -29,7 +29,7 @@ const ProfileInfo = () => {
 
 const styles = StyleSheet.create({
     previewWrapper: {
-        marginTop: 30,
+        marginTop: 10,
         // padding: 100,
         // paddingLeft: 10,
         width: 325, 
